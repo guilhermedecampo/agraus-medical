@@ -1,0 +1,218 @@
+<template name="inserir">
+	<section id="services">
+	<div class="row">
+	  <div class="col-xs-12 col-sm-6 col-sm-offset-3 intro">
+			<h1>Adicionar laudos</h1>
+			<p>Olá {{displayName}}, adicione os respectivos dados do laudo.</p>
+		</div>
+	</div>
+</br>
+</br>
+	<!--START ITEMS SECTIONS-->
+
+	<div class="row">
+		<form id="formInserir">
+		<div class="col-xs-8 col-sm-4 col-sm-offset-4 col-xs-offset-2">
+				<div class="row">
+          <div class="col-xs-12 formContainer text-left">
+            <h3>Filial</h3>
+            <select id="filial"  class="col-xs-12 formContainer" alt="Nome filial">
+              <option value="">Escolher filial</option>
+              {{#each listFiliais}}
+                <option value="{{nomeFilial}}">{{nomeFilial}}</option>
+              {{/each}}
+            </select>
+          </div>
+
+					<div class="col-xs-12 formContainer text-left">
+						<h3 class='inline'>Data laudo</h3>
+						<input type="text" id="data" class="requiredField email date" placeholder="Data laudo">
+					</div>
+					<div class="col-xs-12 formContainer text-left">
+						<h3>Empresa</h3>
+						<select id="empresa"  class="col-xs-10 formContainer" alt="Nome empresa">
+              <option value="">Escolher empresa</option>
+              <option value="THOMRISS">THOMRISS</option>
+              <option value="LWART LUBRIFICANTE">LWART LUBRIFICANTE</option>
+              <option value="RM MONTAGENS">RM MONTAGENS</option>
+            </select>
+            <i data-toggle="modal" data-target="#myModal" class="fa fa-plus-circle fa-2x col-xs-2 formContainer topAlign" title ="Adicionar exame"></i>
+					</div>
+					<div class="col-xs-12 formContainer text-left">
+						<h3>Nome do funcionário</h3>
+						<input type="text" id="nomeFuncionario" class="requiredField email" placeholder="Nome do funcionário">
+					</div>
+					<div class="col-xs-12 formContainer text-left">
+						<h3>Função</h3>
+            <select id="funcaoFuncionario" class="col-xs-10 formContainer" alt="Função do funcionário">
+              <option value="">Função</option>
+              <option value="TRAB. AGRICOLA">TRAB. AGRICOLA</option>
+              <option value="RECEPCIONISTA">RECEPCIONISTA</option>
+            </select>
+          <i data-toggle="modal" data-target="#myModal" class="fa fa-plus-circle fa-2x col-xs-2 formContainer topAlign" title ="Adicionar exame"></i>
+          </div>
+					<div class="col-xs-12 formContainer text-left">
+						<h3>Tipo de Exame</h3>
+						<select id="tipoExame"  class="col-xs-10 formContainer" alt="Tipo de exame">
+              <option value="">Escolher exame</option>
+              <option value="PET">PET</option>
+              <option value="Periódico">Periódico</option>
+            </select>
+            <i data-toggle="modal" data-target="#myModal" class="fa fa-plus-circle fa-2x col-xs-2 formContainer topAlign" title ="Adicionar exame"></i>
+					</div>
+					<div class="col-xs-12 formContainer text-left">
+						<h3>Exame realizado</h3>
+            <div class="col-xs-4">
+              <label>
+                <input type="checkbox" name="checkboxes" id="exame" value="Clinico">
+                    Clínico
+              </label>
+					  </div>
+            <div class="col-xs-4">
+              <label>
+                <input type="checkbox" name="checkboxes" id="checkboxes-0" value="">
+                    Audiometria
+              </label>
+            </div>
+            <div class="col-xs-4">
+              <label>
+                <input type="checkbox" name="checkboxes" id="checkboxes-0" value="">
+                    Espirometria
+              </label>
+            </div>
+            <br>
+            </div>
+            <div class="col-xs-12 formContainer text-left">
+            <div class="col-xs-4">
+              <label>
+                <input type="checkbox" name="checkboxes" id="checkboxes-0" value="">
+                    RX Tórax
+              </label>
+            </div>
+            <div class="col-xs-4">
+              <label>
+                <input type="checkbox" name="checkboxes" id="checkboxes-0" value="">
+                    Hemograma
+              </label>
+            </div>
+            <div class="col-xs-4">
+              <label>
+                <input type="checkbox" name="checkboxes" id="checkboxes-0" value="">
+                    Glicose
+              </label>
+            </div>
+            <br>
+            </div>
+            <div class="col-xs-12 formContainer text-left">
+            <div class="col-xs-4">
+              <label>
+                <input type="checkbox" name="checkboxes" id="checkboxes-0" value="">
+                    ECG
+              </label>
+            </div>
+            <div class="col-xs-4">
+              <label>
+                <input type="checkbox" name="checkboxes" id="checkboxes-0" value="">
+                    EEC
+              </label>
+            </div>
+            <div class="col-xs-4">
+              <label>
+                <input type="checkbox" name="checkboxes" id="checkboxes-0" value="">
+                    Creatinina
+              </label>
+            </div>
+            <br>
+            </div>
+            <div class="col-xs-12 formContainer text-left">
+            <div class="col-xs-4">
+              <label>
+                <input type="checkbox" name="checkboxes" id="checkboxes-0" value="">
+                    VDRL
+              </label>
+            </div>
+            <div class="col-xs-4">
+              <label>
+                <input type="checkbox" name="checkboxes" id="checkboxes-0" value="">
+                    Cul. fezes
+              </label>
+            </div>
+            <div class="col-xs-4">
+              <label>
+                <input type="checkbox" name="checkboxes" id="checkboxes-0" value="">
+                    Protopa. fezes
+              </label>
+            </div>
+            <br>
+            </div>
+            <div class="col-xs-12 formContainer text-left">
+            <div class="col-xs-4">
+              <label>
+                <input type="checkbox" name="checkboxes" id="checkboxes-0" value="">
+                    Herbicida
+              </label>
+            </div>
+            </div>
+
+
+
+
+					<div class="col-xs-12 formContainer text-left">
+						<h3>Prestador</h3>
+            <select type="text" id="nomePrestador" class="col-xs-10 formContainer" alt="Nome do prestador">
+              <option value="">Nome do prestador</option>
+              <option value="Dr. Norberto">Dr. Norberto</option>
+              <option value="LEIA">LEIA</option>
+            </select>
+            <i data-toggle="modal" data-target="#myModal" class="fa fa-plus-circle fa-2x col-xs-2 formContainer topAlign" title ="Adicionar exame"></i>
+
+					</div>
+					</div>
+				</div>
+				</form>
+		</div>
+
+	<!--END ITEMS SECTION-->
+
+	<!--START CONTACT-->
+	<div class="col-xs-12 formContainer">
+		</br>
+		</br>
+		</br>
+	</div>
+	</br>
+	<div id= "contacts" class="row">
+		<div class="col-xs-12 col-sm-6 col-sm-offset-3 intro">
+			<button id="submitLaudo" class="btn">SALVAR</button>
+		</div>
+	</div>
+</section>
+<!-- END SERVICES SECTION -->
+<!-- START MODAL  SECTION -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3 class="modal-title" id="myModalLabel">Adicionar exame</h3>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                  <div class="row">
+                    <div class="col-xs-12 formContainer">
+                      <input type="text" name="addressname" id="nameNewAddress" value="" class="requiredField" placeholder="Exame">
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="submitAddAddressAtOrder" class="btn btn-primary">Adicionar</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+      <!-- END MODAL SECTION -->
+</template>

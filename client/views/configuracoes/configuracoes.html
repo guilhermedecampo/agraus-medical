@@ -1,0 +1,122 @@
+<template name="configuracoes">
+    <!-- START CONTACTS SECTION -->
+  <section id="contacts">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 intro">
+        <h1>Configurações do aplicativo</h1>
+        <p>Controle de usuários e filiais e alteração de senha</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+        <div class="row">
+          <div class="col-xs-6 formContainer">
+            <h2>Filiais</h2>
+          </div>
+          <div class="col-xs-6 formContainer">
+            <h2>Usuários</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 formContainer">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {{#each listFiliais}}
+                        <tr>
+                          <td>{{nomeFilial}}<span class="deleteFilial">&nbsp;&nbsp;X</span></td>
+                        </tr>
+                        {{/each}}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+          </div>
+          <div class="col-xs-6 formContainer">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each listUsuarios}}
+                  <tr>
+                    <td>{{email}}<span class="deleteUsuario">&nbsp;&nbsp;X</span></td>
+                  </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+             </div>
+          </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-xs-6 formContainer">
+            <h3>Adicionar Filial</h3>
+
+          </div>
+          <div class="col-xs-6 formContainer">
+            <h3>Criar Usuário</h3>
+            <input type="text" id="nomeUsuario" class="requiredField email" placeholder="Nome do usuário">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 formContainer">
+          </div>
+          <div class="col-xs-6 formContainer">
+            <input type="text" id="emailUsuario" class="requiredField email" placeholder="Email do usuário">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 formContainer">
+          </div>
+          <div class="col-xs-6 formContainer">
+           <select id="filialEscolha"  class="col-xs-12 formContainer">
+             {{#each listFiliais}}
+               <option value="{{nomeFilial}}">{{nomeFilial}}</option>
+             {{/each}}
+            </select>
+          </div>
+        </div>
+        <div class="row"></hr></div>
+        <div class="row">
+          <div class="col-xs-6 formContainer">
+            <p></p>
+            <input type="text" id="nomeFilial" class="requiredField email" placeholder="Nome filial">
+          </div>
+          <div class="col-xs-6 formContainer">
+            <p></p>
+            <select id="nivelEscolha"  class="col-xs-12 formContainer">
+                <option value='basico'>Básico</option>
+                <option value='intermediario'>Intermediário</option>
+                <option value='administrador'>Administrador</option>
+             </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 formContainer">
+            <button id="submitFilial" class="btn" type="submit">ADICIONAR</button>
+          </div>
+          <div class="col-xs-6 formContainer">
+            <button id="submitUsuario" class="btn" type="submit">CRIAR</button>
+          </div>
+          </div>
+        </div>
+        </br>
+        </br>
+        </br>
+      </div>
+    </div>
+  </section>
+</template>

@@ -1,0 +1,32 @@
+<template name="relatorios">
+  <section id="contacts">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 intro">
+        <h1>Relatório Ambiental</h1>
+        <p>Olá {{displayName}}, analise abaixo os relatórios das operações consolidadas.</p>
+      </br>
+      </br>
+    <div class="row">
+          <div class='col-xs-6 formContainer'>
+            <input id="calendar" readonly='readonly' class="col-xs-12 formContainer" placeholder="Calendário"/>
+          </div>
+          <div class='col-xs-6 formContainer'>
+            <select id="filial"  class="col-xs-12 formContainer" alt="Nome filial">
+              <option value="">Escolher filial</option>
+              {{#each listFiliais}}
+                <option value="{{nomeFilial}}">{{nomeFilial}}</option>
+              {{/each}}
+           </select>
+        </div>
+      </div>
+    <div class="row">
+      <h2>Gráfico em linha quantidade por filial</h2>
+      <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+    <div class="row">
+      <h2>Gráfico pizza quantidade por filial</h2>
+      <canvas id="myChart2" width="400" height="400"></canvas>
+      </div>
+      </div>
+  </section>
+</template>

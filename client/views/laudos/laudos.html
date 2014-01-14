@@ -1,0 +1,145 @@
+<template name="laudos">
+  <section id="contacts">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 intro">
+        {{#if searching}}
+        <h1 class="searching center">Carregando... </h1>
+        {{else}}
+        {{#ifAny orderList}}
+        <h1>Laudos</h1>
+      </br>
+        <p>Olá {{displayName}}, abaixo estão os laudos adicionados por você.</br> Caso necessário modifique o laudo no botão modificar.</p>
+        </br>
+      </br>
+        {{#if ifIntermediario}}
+        <div class="row">
+              <div class='col-xs-6 formContainer'>
+                <input id="calendar" readonly='readonly' class="col-xs-12 formContainer" placeholder="Calendário"/>
+              </div>
+              <div class='col-xs-6 formContainer'>
+                <select id="filial"  class="col-xs-12 formContainer" alt="Nome filial">
+                  <option value="">Escolher filial</option>
+                  {{#each listFiliais}}
+                    <option value="{{nomeFilial}}">{{nomeFilial}}</option>
+                  {{/each}}
+               </select>
+            </div>
+            <div class="row">
+                <button class="btn">BUSCAR</button>
+            </div>
+
+        {{/if}}
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Filial</th>
+              <th>Data laudo</th>
+              <th>Empresa</th>
+              <th>Nome do funcionário</th>
+              <th>Função</th>
+              <th>Tipo de Exame</th>
+              <th>Exame realizado</th>
+              <th>Prestador</th>
+              <th>Modificar</th>
+              <th>Deletar</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each orderList}}
+            <tr>
+              <td>{{pertenceFilial}}</td>
+              <td>{{criadoEmMoment}}</td>
+              <td>{{nomeEmpresa}}</td>
+              <td>{{nomeFuncionario}}</td>
+              <td>{{funcaoFuncionario}}</td>
+              <td>{{tipoExame}}</td>
+              <td>{{exame}}</td>
+              <td>{{nomePrestador}}</td>
+              <td><button id="modify" class="btn" data-toggle="modal" data-target="#myModal">Modificar</button></td>
+              <td><button id="modify" class='btn modify deletarLaudo'>Deletar</button></td>
+              {{/each}}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    {{#if allOrders}}
+    <input type="submit" id="more" class="button" value="More!">
+    {{/if}}
+      {{else}}
+      <div class="row intro">
+        <h1 class="notfound">Você não tem laudos adicionados</h1>
+      </div>
+      <div id= "intro" class="col-xs-12 formContainer">
+        <button class="btn goOrder">Adicionar</button>
+      </div>
+      {{/ifAny}}
+    {{/if}}
+  </section>
+  <!-- START MODAL  SECTION -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h3 class="modal-title" id="myModalLabel">Modificar laudo</h3>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                    <div class="row">
+                      <div class="col-xs-12 formContainer text-left">
+                                  <h3 class='inline'>Nome empresa </h3>
+                                  <input type="text" id="nomeEmpresa" class="requiredField email" placeholder="Nome empresa">
+                                </div>
+                                <div class="col-xs-12 formContainer text-left">
+                                  <h3>CNPJ/CPF empresa</h3>
+                                  <input type="text" id="idEmpresa" class="requiredField email" placeholder="CNPJ/CPF empresa">
+                                </div>
+                                <div class="col-xs-12 formContainer text-left">
+                                  <h3>Nome do funcionário</h3>
+                                  <input type="text" id="nomeFuncionario" class="requiredField email" placeholder="Nome do funcionário">
+                                </div>
+                                <div class="col-xs-12 formContainer text-left">
+                                  <h3>RG funcionário</h3>
+                                  <input type="text" id="idFuncionario" class="requiredField email" placeholder="RG funcionário">
+                                </div>
+                                <div class="col-xs-12 formContainer text-left">
+                                  <h3>Data Exame</h3>
+                                  <input type="text" id="data" class="requiredField email" placeholder="Data Exame">
+                                </div>
+                                <div class="col-xs-12 formContainer text-left topAlign">
+                                  <h3>Exame realizado</h3>
+                                  <select id="exame"  class="col-xs-10 formContainer" alt="Escolher exame">
+                                    <option value="Home">Exame 1</option>
+                                    <option value="Office">Exame 2</option>
+                                    <option value="Marie's">Exame 3</option>
+                                    <option value="Other">Exame 4</option>
+                                  </select>
+                                  <i data-toggle="modal" data-target="#myModal" class="fa fa-plus-circle fa-2x col-xs-1 formContainer topAlign" title ="Adicionar exame"></i>
+                                </div>
+                                <div class="col-xs-12 formContainer text-left">
+                                  <h3>CNPJ/CPF do prestador</h3>
+                                  <input type="text" id="idPrestador" class="requiredField email" placeholder="CNPJ/CPF do prestador">
+                                </div>
+                                <div class="col-xs-12 formContainer text-left">
+                                  <h3>Nome do prestador</h3>
+                                  <input type="text" id="nomePrestador" class="requiredField email" placeholder="Nome do prestador">
+                                </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="submitAddAddressAtOrder" class="btn btn-primary">Modificar</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+        <!-- END MODAL SECTION -->
+</template>

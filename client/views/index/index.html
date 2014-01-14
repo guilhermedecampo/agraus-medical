@@ -1,0 +1,44 @@
+<template name="index">
+		<!-- START CONTACTS SECTION -->
+		<section id="contacts" class="topIntro">
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-sm-offset-3 intro">
+					<img src="/images/ambiental.png">
+					<h2>Ambiental App</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-8 col-sm-4 col-sm-offset-4 col-xs-offset-2">
+						<div class="row">
+							{{#if forgotIt}}
+							<div class="col-xs-12 formContainer">
+								<input type="text" id="emailForgot" class="requiredField email" placeholder="Email">
+							</div>
+								<div class="col-xs-12 formContainer">
+									<button id="sendForgotten" class="btn">ENVIAR SENHA NO EMAIL</button>
+								</div>
+								<div class="col-xs-12 formContainer">
+									<button id="cancelEmail" class="btn">CANCELAR</button>
+								</div>
+							{{else}}
+							<div class="col-xs-12 formContainer">
+								<input type="text" id="emailSignIn" class="requiredField email" placeholder="Email">
+							</div>
+							<div class="col-xs-12 formContainer">
+								<input type="password" id="passwordSignIn" class="requiredField" placeholder="Senha">
+							</div>
+							<div class="col-xs-12 formContainer">
+								<button id="submitSignIn" class="btn">ENTRAR</button>
+							</div>
+							<div class="col-xs-12 formContainer">
+								<button id="submitForgot" class="btn">ESQUECI MINHA SENHA</button>
+							</div>
+							{{/if}}
+							</div>
+						</div>
+				</div>
+		</br>
+	</br>
+		</section>
+		<!-- END CONTACTS SECTION -->
+	</template>

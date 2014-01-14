@@ -1,0 +1,100 @@
+<template name="layout">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Ambiental App</title>
+
+  <link href="/favicon.png" rel="icon" type="image/x-icon" />
+  <!-- STYLESHEETS -->
+  <!-- FONTS -->
+  <link href='http://fonts.googleapis.com/css?family=Cabin:400,700,400italic|Merriweather:900' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <!-- START PAGE -->
+  {{#if currentUser}}<div id="page">{{else}}<div id="page" class="backgroundSoft">{{/if}}
+{{#if currentUser}}
+<!-- START TOP-BAR -->
+<div id="top-bar2" class="backgroundSoft">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div id="logo-lettering" >
+          <a href="/inserir"><img src="/images/ambiental.png" alt="Logo Ambiental"/></a>
+        </div>
+        <!-- the hidden classes of the official release are no accumlative. that's why we used the @TurchenkoAlex ones.
+        https://github.com/TurchenkoAlex/bootstrap/tree/3.0.0-wip/dist/css -->
+        <div id="menu-mobile" class="hidden-md hidden-lg">
+          <i class="icon-reorder icon-2x"></i>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <nav id="top-navigation">
+          <ul class="list-inline">
+            <li><a href="/inserir" >Adicionar Laudos</a></li>
+            <li><a href="/laudos">Laudos Adicionados</a></li>
+            {{#if adminNivel}}
+            <li><a href="/relatorios" >Relatórios</a></li>
+            <li><a href="/configuracoes" >Configurações</a></li>
+            {{/if}}
+            <li><a href="" class="goOut">Sair</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END TOP-BAR -->
+{{else}}
+  <!-- START TOP-BAR -->
+
+  <!-- END TOP-BAR -->
+  {{/if}}
+  {{yield}}
+        <!-- START CONTACTS SECTION
+            <section id="contacts">
+              <div class="row">
+                <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                  <div class="contact-info">
+                    <div class="row">
+                      <div class="col-sm-4 contact">
+                        <div class="icon">
+                          <a><i class="icon-envelope icon-3x"></i></a>
+                        </div>
+                        <p>hello@getcleanio.com</p>
+                      </div>
+                      <div class="col-sm-4 contact">
+                        <div class="icon">
+                          <a href="https://www.google.com/maps?daddr=Pra%C3%A7a+da+Rep%C3%BAblica,+3000-019+Coimbra,+Portugal&ie=UTF8&ll=40.20954,-8.419797&spn=0.009488,0.01929&sll=40.22875989954939,-8.416598004503014&sspn=0.1779943086948243,0.43959398257471627&t=m&dg=opt&z=16&iwloc=ddw1" targe="_blank"><i class="icon-map-marker icon-3x"></i></a>
+                        </div>
+                        <p>32, rue du Caire<br/>75003 Paris<br/></p>
+                      </div>
+                      <div class="col-sm-4 contact">
+                        <div class="icon">
+                          <a><i class="icon-phone icon-3x"></i></a>
+                        </div>
+                        <p>06 31 29 39 97</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+      <!-- END CONTACTS SECTION -->
+
+      <!-- START FOOTER -->
+      <!-- START FOOTER -->
+      {{#if currentUser}}
+      <footer>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+            <hr/>
+        </div>
+        {{/if}}
+      </footer>
+      <!-- END FOOTER -->
+      <!-- END FOOTER -->
+    </div>
+    <!-- END PAGE -->
+  </body>
+</template>
