@@ -25,8 +25,7 @@ Template.inserir.events({
         nomePrestador    = template.find('#nomePrestador').value,
         criadoEmPuro     = new Date(),
         criadoEmMoment   = moment().format("DD/MM/YYYY"),
-        pertenceFilial   = template.find('#filial').value,
-        pertenceFilialFuture   = Meteor.user().profile.filial;
+        nomeReceita      = template.find('#receita').value;
 
     NProgress.start();
       Laudos.insert({
@@ -38,7 +37,7 @@ Template.inserir.events({
         nomePrestador: nomePrestador,
         criadoEmPuro: criadoEmPuro,
         criadoEmMoment: criadoEmMoment,
-        pertenceFilial: pertenceFilial,
+        nomeReceita: nomeReceita,
       });
       NProgress.done();
       humane.log('Laudo adicionado com sucesso.');

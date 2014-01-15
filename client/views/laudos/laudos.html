@@ -2,14 +2,10 @@
   <section id="contacts">
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-sm-offset-3 intro">
-        {{#if searching}}
-        <h1 class="searching center">Carregando... </h1>
-        {{else}}
-        {{#ifAny orderList}}
-        <h1>Laudos</h1>
+        <h1>Rendas</h1>
+          </br>
+          <p>Olá {{displayName}}, abaixo estão as rendas adicionadas.</br>Filtre por período e tipo de renda.</p>
       </br>
-        <p>Olá {{displayName}}, abaixo estão os laudos adicionados por você.</br> Caso necessário modifique o laudo no botão modificar.</p>
-        </br>
       </br>
         {{#if ifIntermediario}}
         <div class="row">
@@ -31,6 +27,7 @@
         {{/if}}
       </div>
     </div>
+    {{#ifAny orderList}}
     <div class="col-xs-12 col-sm-8 col-sm-offset-2">
       <div class="table-responsive">
         <table class="table table-hover">
@@ -78,7 +75,6 @@
         <button class="btn goOrder">Adicionar</button>
       </div>
       {{/ifAny}}
-    {{/if}}
   </section>
   <!-- START MODAL  SECTION -->
       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
