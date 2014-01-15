@@ -4,9 +4,9 @@ Template.relatorios.helpers({
     var nome = user.profile.nome;
     return nome;
   },
-  listFiliais: function () {
-    listFiliais = Filiais.find().fetch();
-    return listFiliais;
+  listTipoRendas: function () {
+    listTipoRendas = TipoRenda.find().fetch();
+    return listTipoRendas;
   },
 });
 
@@ -34,9 +34,9 @@ Template.relatorios.rendered = function () {
   //Get the context of the canvas element we want to select
   var ctx = document.getElementById("myChart").getContext("2d");
   console.log(ctx);
-  var x = Filiais.find().fetch();
+  var x = TipoRenda.find().fetch();
   var data = {
-    labels : _.map(x || [], function (nomeFilial) { return nomeFilial.nomeFilial;}),
+    labels : _.map(x || [], function (nomeRenda) { return nomeRenda.nomeRenda;}),
     datasets : [
       {
         fillColor : "rgba(220,220,220,0.5)",

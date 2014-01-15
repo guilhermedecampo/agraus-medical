@@ -1,12 +1,8 @@
-Session.set('searching', true);
-
-Meteor.subscribe("laudos", function() {
-  Session.set('searching', false);
-});
-
-
+Meteor.subscribe("rendas");
+Meteor.subscribe("tipoRenda");
+Meteor.subscribe("pacientes");
 Meteor.subscribe("admin");
-Meteor.subscribe("filiais");
+
 
 
 

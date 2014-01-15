@@ -15,35 +15,42 @@ Template.inserir.rendered = function () {
 };
 
 Template.inserir.events({
-  'click #submitLaudo': function (event, template) {
-    var nomeEmpresa       = template.find('#empresa').value,
-
-        nomeFuncionario   = template.find('#nomeFuncionario').value,
-        funcaoFuncionario = template.find('#funcaoFuncionario').value,
-        tipoExame         = template.find('#tipoExame').value,
-        exame            = template.find('#exame').value,
-        nomePrestador    = template.find('#nomePrestador').value,
-        criadoEmPuro     = new Date(),
-        criadoEmMoment   = moment().format("DD/MM/YYYY"),
-        nomeReceita      = template.find('#receita').value;
+  'click #submitRenda': function (event, template) {
+    var valorRenda = '';
+    var nomeRenda         = template.find('#nomeRenda').value,
+        data              = template.find('#data').value,
+        nomePaciente      = template.find('#nomePaciente').value,
+        comentarios       = template.find('#comentarios').value,
+        criadoEmPuro      = new Date(),
+        idCommon          = Meteor.user().profile.idCommon;
 
     NProgress.start();
-      Laudos.insert({
-        nomeEmpresa: nomeEmpresa,
-        nomeFuncionario: nomeFuncionario,
-        funcaoFuncionario: funcaoFuncionario,
-        tipoExame: tipoExame,
-        exame: exame,
-        nomePrestador: nomePrestador,
+      Rendas.insert({
+        nomeRenda: nomeRenda,
+        valorRenda: valorRenda,
+        data: data,
+        nomePaciente: nomePaciente,
+        comentarios: comentarios,
         criadoEmPuro: criadoEmPuro,
-        criadoEmMoment: criadoEmMoment,
-        nomeReceita: nomeReceita,
+        idCommon: idCommon,
       });
       NProgress.done();
-      humane.log('Laudo adicionado com sucesso.');
+      humane.log('Renda adicionada com sucesso.');
       $('#formInserir')[0].reset();
       document.body.scrollTop = 0;
-  }
+  },
+
+  'click #submitNewPaciente': function (event, template) {
+    var newPaciente = template.find('#newPaciente').value;
+    NProgress.start();
+      Pacientes.insert({
+        paciente: newPaciente,
+        idCommon: Meteor.user().profile.idCommon,
+      });
+      NProgress.done();
+      humane.log('Paciente adicionado com sucesso.');
+    },
+
 });
 
 Template.inserir.helpers({
@@ -52,8 +59,12 @@ Template.inserir.helpers({
      var nome = user.profile.nome;
      return nome;
    },
-   listFiliais: function () {
-     listFiliais = Filiais.find().fetch();
-     return listFiliais;
+   listTipoRendas: function () {
+     listTipoRendas = TipoRenda.find().fetch();
+     return listTipoRendas;
+   },
+   listPacientes: function () {
+     listPacientes = Pacientes.find().fetch();
+     return listPacientes;
    },
 });

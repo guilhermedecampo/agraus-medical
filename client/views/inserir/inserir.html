@@ -17,30 +17,32 @@
 				<div class="row">
           <div class="col-xs-12 formContainer text-left">
             <h3>Tipo de renda</h3>
-            <select id="receita"  class="col-xs-12 formContainer">
+            <select id="nomeRenda"  class="col-xs-12 formContainer">
               <option value="">Escolher</option>
-              {{#each listFiliais}}
-                <option value="{{nomeFilial}}">{{nomeFilial}}</option>
+              {{#each listTipoRendas}}
+                <option value="{{nomeRenda}}">{{nomeRenda}}</option>
               {{/each}}
             </select>
           </div>
 
 					<div class="col-xs-12 formContainer text-left">
 						<h3 class='inline'>Data</h3>
-						<input type="text" id="data" class="requiredField email date" placeholder="Data laudo">
+						<input type="text" id="data" placeholder="Data renda">
 					</div>
-                    <div class="col-xs-12 formContainer text-left">
-                      <h3>Nome Paciente</h3>
-                      <select id="funcaoFuncionario" class="col-xs-10 formContainer" alt="Função do funcionário">
-                        <option value="">Escolher paciente</option>
-                        <option value="TRAB. AGRICOLA">José Raul</option>
-                        <option value="RECEPCIONISTA">Antonio silva</option>
-                      </select>
-                    <i data-toggle="modal" data-target="#myModal" class="fa fa-plus-circle fa-2x col-xs-2 formContainer topAlign" title ="Adicionar exame"></i>
-                    </div>
+
+          <div class="col-xs-12 formContainer text-left">
+            <h3>Nome Paciente</h3>
+            <select id="nomePaciente" class="col-xs-10 formContainer">
+            <option value="">Escolher paciente</option>
+            {{#each listPacientes}}
+              <option value="{{paciente}}">{{paciente}}</option>
+            {{/each}}
+            </select>
+            <i data-toggle="modal" data-target="#myModal" class="fa fa-plus-circle fa-2x col-xs-2 formContainer topAlign" title ="Adicionar paciente"></i>
+          </div>
 					<div class="col-xs-12 formContainer text-left">
 						<h3>Comentários</h3>
-						<input type="text" id="nomeFuncionario" class="requiredField email" placeholder="Nome do funcionário">
+					   <textarea id="comentarios" placeholder="Comentários"></textarea>
 					</div>
 
 					</div>
@@ -59,7 +61,7 @@
 	</br>
 	<div id= "contacts" class="row">
 		<div class="col-xs-12 col-sm-6 col-sm-offset-3 intro">
-			<button id="submitLaudo" class="btn">SALVAR</button>
+			<button id="submitRenda" class="btn">SALVAR</button>
 		</div>
 	</div>
 </section>
@@ -70,21 +72,21 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h3 class="modal-title" id="myModalLabel">Adicionar exame</h3>
+            <h3 class="modal-title" id="myModalLabel">Adicionar paciente</h3>
           </div>
           <div class="modal-body">
             <div class="row">
               <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                   <div class="row">
                     <div class="col-xs-12 formContainer">
-                      <input type="text" name="addressname" id="nameNewAddress" value="" class="requiredField" placeholder="Exame">
+                      <input type="text" id="newPaciente" value="" class="requiredField" placeholder="Paciente">
                     </div>
                   </div>
               </div>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" id="submitAddAddressAtOrder" class="btn btn-primary">Adicionar</button>
+            <button type="button" id="submitNewPaciente" class="btn btn-primary">Adicionar</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
           </div>
         </div><!-- /.modal-content -->

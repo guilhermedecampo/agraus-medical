@@ -10,27 +10,43 @@ isAdmin = function (email) {
     }
 };
 
-Meteor.publish('laudos', function () {
+Meteor.publish('rendas', function () {
   if (this.userId) {
   var user = Meteor.users.findOne(this.userId);
   var email = (user.emails && user.emails[0] && user.emails[0].address);
-  var filial = user.profile.filial;
+  var idCommon = user.profile.idCommon;
   if (isAdmin(email)) {
-    return Laudos.find({});
+    return Rendas.find({});
   } else {
-    return Laudos.find({pertenceFilial: filial});
+    return Rendas.find({idCommon: idCommon});
   }
   } else {
     this.ready();
   }
 });
 
-Meteor.publish('filiais', function () {
+Meteor.publish('tipoRenda', function () {
   if (this.userId) {
   var user = Meteor.users.findOne(this.userId);
   var email = (user.emails && user.emails[0] && user.emails[0].address);
   if (isAdmin(email)) {
-    return Filiais.find({});
+    return TipoRenda.find({});
+  } else {
+    return TipoRenda.find({idCommon: idCommon});
+  }
+  } else {
+    this.ready();
+  }
+});
+
+Meteor.publish('pacientes', function () {
+  if (this.userId) {
+  var user = Meteor.users.findOne(this.userId);
+  var email = (user.emails && user.emails[0] && user.emails[0].address);
+  if (isAdmin(email)) {
+    return Pacientes.find({});
+  } else {
+    return Pacientes.find({idCommon: idCommon});
   }
   } else {
     this.ready();
@@ -46,7 +62,8 @@ if (Meteor.users.find().count() === 0) {
     email:    'guilherme.decampo@gmail.com',
     password: '123456',
     profile: { nome:'Guilherme',
-               nivel: 'administrador'
+               nivel: 'administrador',
+               idCommon: Random.id()
             }
   });
 }
@@ -88,7 +105,7 @@ Meteor.users.allow({
 
 
 //Permissions//
-Laudos.allow({
+Rendas.allow({
   insert: function (userId, doc) {
     // the user must be logged in, and the document must be owned by the user
         return true;
@@ -106,7 +123,25 @@ Laudos.allow({
 
 });
 
-Filiais.allow({
+TipoRenda.allow({
+  insert: function (userId, doc) {
+    // the user must be logged in, and the document must be owned by the user
+        return true;
+  },
+
+  update: function (userId, doc, fields, modifier) {
+      return true;
+  },
+
+  remove: function (userId, doc) {
+      // can only remove your own documents
+         return true;
+  }
+
+
+});
+
+Pacientes.allow({
   insert: function (userId, doc) {
     // the user must be logged in, and the document must be owned by the user
         return true;
@@ -148,9 +183,9 @@ Meteor.startup(function () {
             }
         }
       },
-       createUserStartup: function(email, nome, filial, nivel) {
+       createUserStartup: function(email, nome, idCommon, nivel) {
         if (this.userId) {
-        var UserId = Accounts.createUser({email:email, password: "password", profile: { nome: nome , filial: filial, nivel: nivel }});
+        var UserId = Accounts.createUser({email:email, password: "password", profile: { nome: nome, idCommon: idCommon, nivel: nivel }});
         Accounts.sendEnrollmentEmail(UserId);
       }
       },

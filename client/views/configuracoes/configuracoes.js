@@ -1,28 +1,31 @@
 Template.configuracoes.events({
-  'click #submitFilial': function (event, template) {
-    var nomeFilial = template.find('#nomeFilial').value;
-    if (isNotEmpty(nomeFilial)) {
+  'click #submitRenda': function (event, template) {
+    var nomeRenda = template.find('#nomeRenda').value;
+    var valorRenda = template.find('#valorRenda').value;
+    if (isNotEmpty(nomeRenda)&&isNotEmpty(valorRenda)) {
       NProgress.start();
-      Filiais.insert({
-        nomeFilial: nomeFilial,
+      TipoRenda.insert({
+        nomeRenda:nomeRenda,
+        valorRenda:valorRenda,
+        idCommon: Meteor.user().profile.idCommon,
       });
       NProgress.done();
-      template.find('#nomeFilial').value = '';
+      template.find('#nomeRenda').value = '';
     }
   },
   'click .deleteFilial': function(event, template) {
         var id  = this._id;
         NProgress.start();
-    Filiais.remove({_id:id});
+    TipoRenda.remove({_id:id});
         NProgress.done();
   },
   'click #submitUsuario': function (event, template) {
-      var nome = template.find('#nomeUsuario').value,
-          filial = template.find('#filialEscolha').value,
-          nivel = template.find('#nivelEscolha').value,
-          email = trimInput(template.find("#emailUsuario").value.toLowerCase());
-      if (isNotEmpty(nome)&&isNotEmpty(filial)&&isNotEmpty(email)&& isEmail(email)&& isNotTheSameMan(email)) {
-        Meteor.call('createUserStartup', email, nome, filial, nivel, function (err, email,nome,filial,nivel ) { } );
+      var nome      = template.find('#nomeUsuario').value,
+          nivel     = template.find('#nivelEscolha').value,
+          email     = trimInput(template.find("#emailUsuario").value.toLowerCase()),
+          idCommon  = Meteor.user().profile.idCommon;
+      if (isNotEmpty(nome)&&isNotEmpty(email)&& isEmail(email)&& isNotTheSameMan(email)) {
+        Meteor.call('createUserStartup', email, nome, idCommon, nivel, function (err, email,nome, idCommon, nivel ) { } );
         humane.log('Usuário criado com sucesso!');
         template.find('#nomeUsuario').value = '';
         template.find("#emailUsuario").value = '';
@@ -37,12 +40,11 @@ Template.configuracoes.events({
 });
 
 Template.configuracoes.helpers({
-  listFiliais: function () {
-    listFiliais = Filiais.find().fetch();
-    return listFiliais;
+  listTipoRendas: function () {
+    listTipoRendas = TipoRenda.find().fetch();
+    return listTipoRendas;
   },
   listUsuarios: function () {
-
     var listUsuarios = Meteor.users.find({});
     return listUsuarios.map(function(user) { return {email: user.emails[0].address}; });
   },

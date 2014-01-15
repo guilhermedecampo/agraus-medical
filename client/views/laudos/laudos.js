@@ -23,11 +23,8 @@ Session.set('slice', 3);
 
 Template.laudos.helpers({
   orderList: function () {
-    laudos = Laudos.find().fetch();
-    return laudos;
-  },
-  searching: function () {
-    return Session.get("searching");
+    rendas = Rendas.find().fetch();
+    return rendas;
   },
   displayName: function () {
       var user = Meteor.user();
@@ -41,9 +38,9 @@ Template.laudos.helpers({
       return false;
     }
   },
-  listFiliais: function () {
-    listFiliais = Filiais.find().fetch();
-    return listFiliais;
+  listTipoRendas: function () {
+    listTipoRendas = TipoRenda.find().fetch();
+    return listTipoRendas;
   },
 
 });
@@ -71,7 +68,7 @@ Template.laudos.events({
   'click .deletarLaudo': function (event, template) {
     var id = this._id;
     NProgress.start();
-    Laudos.remove({_id:id});
+    Rendas.remove({_id:id});
     NProgress.done();
   }
 

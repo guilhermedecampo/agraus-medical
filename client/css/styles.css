@@ -6,6 +6,9 @@ Author:             digitalcookers™
 Author URI:         http://creativemarket.com/digitalcookers
 
 */
+
+.explain {font-size: 15px; margin-bottom: 10px}
+
 #calendar::-webkit-input-placeholder {
     color: white;
 }
@@ -317,6 +320,7 @@ input[type="text"]:focus,input[type="email"]:focus,input[type="password"]:focus,
  .btn{ border-radius: 8px; width:100%;margin-top:1em; border:none; background-color: #25AAE1; color: white;font-weight:normal;-webkit-transition: all 0.4s ease-in-out;-moz-transition: all 0.4s ease-in-out;-o-transition: all 0.4s ease-in-out;transition: all 0.4s ease-in-out;}
  .btn:hover{background-color: #2a2a2a; color: white;font-weight:normal;}
 .formContainer{position: relative;}
+.margin-config {margin:1px;}
 
 #redButton .btn{ border-radius: 8px; width:100%;margin-top:1em;  border:none; background-color: red; color: white;font-weight:normal;-webkit-transition: all 0.4s ease-in-out;-moz-transition: all 0.4s ease-in-out;-o-transition: all 0.4s ease-in-out;transition: all 0.4s ease-in-out;}
 #redButton .btn:hover{background-color: #2a2a2a; color: white;font-weight:normal;}
