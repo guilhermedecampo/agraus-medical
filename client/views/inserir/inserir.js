@@ -16,8 +16,9 @@ Template.inserir.rendered = function () {
 
 Template.inserir.events({
   'click #submitRenda': function (event, template) {
-    var valorRenda = '';
-    var nomeRenda         = template.find('#nomeRenda').value,
+
+    var nomeRenda         = template.find('#nomeRenda').value;
+    var valorRenda        = TipoRenda.findOne({nomeRenda: nomeRenda}).valorRenda,
         data              = template.find('#data').value,
         nomePaciente      = template.find('#nomePaciente').value,
         comentarios       = template.find('#comentarios').value,

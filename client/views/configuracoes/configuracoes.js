@@ -11,6 +11,7 @@ Template.configuracoes.events({
       });
       NProgress.done();
       template.find('#nomeRenda').value = '';
+      template.find('#valorRenda').value = '';
     }
   },
   'click .deleteFilial': function(event, template) {

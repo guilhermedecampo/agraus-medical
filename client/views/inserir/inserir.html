@@ -17,10 +17,10 @@
 				<div class="row">
           <div class="col-xs-12 formContainer text-left">
             <h3>Tipo de renda</h3>
-            <select id="nomeRenda"  class="col-xs-12 formContainer">
+            <select id="tipoRenda"  class="col-xs-12 formContainer">
               <option value="">Escolher</option>
-              {{#each listTipoRendas}}
-                <option value="{{nomeRenda}}">{{nomeRenda}}</option>
+              {{#each listRendas}}
+                <option value="{{tipoRenda}}">{{tipoRenda}}</option>
               {{/each}}
             </select>
           </div>
@@ -35,7 +35,7 @@
             <select id="nomePaciente" class="col-xs-10 formContainer">
             <option value="">Escolher paciente</option>
             {{#each listPacientes}}
-              <option value="{{paciente}}">{{paciente}}</option>
+              <option value="{{nomePaciente}}">{{paciente}}</option>
             {{/each}}
             </select>
             <i data-toggle="modal" data-target="#myModal" class="fa fa-plus-circle fa-2x col-xs-2 formContainer topAlign" title ="Adicionar paciente"></i>
