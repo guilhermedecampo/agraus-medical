@@ -3,7 +3,8 @@
 		<section id="contacts" class="topIntro">
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-sm-offset-3 intro">
-					<h1 class="headline">Agraus </br> finanças para médicos</h1>
+					<h1 class="headline">Agraus </br> <i>finanças para médicos</i></h1>
+				</br>
 					<h2>Saiba tudo sobre sua renda</h2>
 				</div>
 			</div>
@@ -13,6 +14,20 @@
 							</div>
 							<div class="col-xs-12  col-sm-6">
 								<div style="padding-top:50px;padding-bottom:100px;" class="row">
+						{{#if signUp}}
+						<div class="col-xs-10 formContainer">
+							<input type="text" id="nameSignUp" class="requiredField email" placeholder="Nome">
+						</div>
+						<div class="col-xs-10 formContainer">
+							<input type="text" id="emailSignUp" class="requiredField email" placeholder="Email">
+						</div>
+						<div class="col-xs-10 formContainer">
+							<input type="password" id="passwordSignUp" class="requiredField" placeholder="Senha">
+						</div>
+						<div class="col-xs-10 formContainer">
+							<button id="submitSignUp" class="btn" style="background-color:#70ac5e;outline:0;">ENTRAR</button>
+						</div>
+						{{else}}
 						{{#if forgotIt}}
 						<div class="col-xs-10 formContainer">
 							<input type="text" id="emailForgot" class="requiredField email" placeholder="Email">
@@ -34,8 +49,15 @@
 							<button id="submitSignIn" class="btn">ENTRAR</button>
 						</div>
 						<div class="col-xs-10 formContainer">
-							<button id="submitForgot" class="btn">ESQUECI MINHA SENHA</button>
+							<button id="submitForgot" class="btn" >ESQUECI MINHA SENHA</button>
 						</div>
+						<div class="col-xs-10 formContainer">
+						</br>
+						</div>
+						<div class="col-xs-10 formContainer">
+							<button id="signUp" class="btn" style="background-color:#70ac5e;outline:0;">CADASTRE-SE</button>
+						</div>
+						{{/if}}
 						{{/if}}
 						</div>
 						</div>

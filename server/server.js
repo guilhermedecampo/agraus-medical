@@ -165,23 +165,13 @@ Pacientes.allow({
 Meteor.startup(function () {
     // code to run on server at startup
     Meteor.methods({
-      sendEmailChangeStatus: function(email, subject, html) {
+      sendEmail: function(email, subject, html) {
         Email.send({
           to: email,
-          from: "Cleanio Order System "+"order@getcleanio.com",
+          from: "Agraus Boas Vindas "+"hello@dsedimently.com",
           subject: subject,
           html: html
         });
-      },
-      emailTest: function(val) {
-        if (this.userId) {
-            var emailVal = Meteor.users.findOne({'emails.address': {$regex:val,$options:'i'}});
-            if ( emailVal === undefined) {
-              return true;
-            } else {
-              return false;
-            }
-        }
       },
        createUserStartup: function(email, nome, idCommon, nivel) {
         if (this.userId) {
@@ -198,19 +188,19 @@ Meteor.startup(function () {
 
   process.env.MAIL_URL='smtp://email-noreply%40sedimently.com:allegu09@smtp.zoho.com:465/';
 
-  Accounts.emailTemplates.siteName = "Ambiental";
-  Accounts.emailTemplates.from = "Ambiental email system <email-noreply@sedimently.com>";
+  Accounts.emailTemplates.siteName = "Agraus";
+  Accounts.emailTemplates.from = "Agraus email system <email-noreply@sedimently.com>";
   Accounts.emailTemplates.enrollAccount.subject = function (user) {
-      return "Bem vindo ao aplicativo da Ambiental!";
+      return "Bem vindo ao aplicativo Agraus!";
   };
   Accounts.emailTemplates.enrollAccount.text = function (user, url) {
-     return "Olá " + user.profile.nome + '!\n\n' + " Você foi selecionado para utilizar o novo aplicativo da Ambiental.\n\n" + "Acesse o link abaixo e crie uma senha\n" + url + "\n\n" + "Obrigado\n"+"Ambiental" ;
+     return "Olá " + user.profile.nome + '!\n\n' + " Você foi selecionado para utilizar o novo aplicativo Agraus.\n\n" + "Acesse o link abaixo e crie uma senha\n" + url + "\n\n" + "Obrigado\n"+"Agraus" ;
   };
   Accounts.emailTemplates.resetPassword.subject = function (user) {
       return "Você pediu uma nova senha!";
   };
   Accounts.emailTemplates.resetPassword.text = function (user, url) {
-     return "Olá " + user.profile.nome + ".\n\n" + "Para modificar sua senha acesse o link abaixo:\n\n" + url + "\n\n" + "Obrigado\n"+"Ambiental" ;
+     return "Olá " + user.profile.nome + ".\n\n" + "Para modificar sua senha acesse o link abaixo:\n\n" + url + "\n\n" + "Obrigado\n"+"Agraus" ;
   };
 
   });

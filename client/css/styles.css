@@ -37,7 +37,13 @@ th {text-align: center;}
 .danger {background-color: red;}
 .deleteItem,  .deleteFilial, .deleteUsuario {cursor:pointer;}
 .topIntro {padding-top: 3.125em;}
-.headline {color:#fff; }
+.headline {color:#fff; text-decoration: none;}
+.headline:hover {text-decoration: none;}
+
+.logo {
+  font-size: 30px;
+}
+
 .backgroundSoft {
  background: #092756;
   background: -moz-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%),-moz-linear-gradient(top, rgba(57,173,219,.25) 0%, rgba(42,60,87,.4) 100%), -moz-linear-gradient(-45deg, #670d10 0%, #092756 100%);
@@ -435,7 +441,7 @@ footer hr{margin:0; margin-bottom:2em;border-bottom:1px solid #cccccc; padding-t
 
 	/* Logo */
 
-	#logo-lettering{margin-top: 0.3em;}
+	#logo-lettering{margin-top: 1.0em;}
 
 	/* Top Navigation */
 

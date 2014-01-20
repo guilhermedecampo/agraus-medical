@@ -1,5 +1,5 @@
-Template.index.rendered = function () {
-
+Template.index.created = function () {
+  Session.set('signUp', false);
 };
 
 
@@ -67,12 +67,62 @@ Template.index.events({
             }
           return false;
     },
+    'click #signUp': function (event, template) {
+      Session.set('signUp', true);
+    },
+    'click #submitSignUp': function (event, template) {
+      event.preventDefault();
+        var
+        userNameUp      = template.find('#nameSignUp').value,
+        userEmailUp     = trimInput(template.find('#emailSignUp').value.toLowerCase()),
+        userPasswordUp  = template.find('#passwordSignUp').value;
+        if (isNotEmpty(userEmailUp)&& isNotEmpty(userPasswordUp)&& isNotEmpty(userNameUp))
+        {
+            NProgress.start();
+            Accounts.createUser({
+              email:    userEmailUp,
+              password: userPasswordUp,
+              profile: {
+                nome:userNameUp,
+                nivel: 'administrador',
+                idCommon: Random.id(),
+              }}, function (err) {
+                if (err && err.error === 403) {
+                  console.log(err.reason);
+                  if (err.reason === "Email already exists.") {
+                    humane.log('Descupe, esse email já existe!');
+                  }
+                  } else {
+                  var subject = 'Bem vindo a Agraus!';
+                  var html = "<p>Olá " + userNameUp + ",</br></p>" +"<p>Agradecemos por utilizar nosso serviço de gerenciamento de rendas médicas!</p>" + "<p>Sabemos o quanto é complicado saber exatamente quando e de onde vem a renda. Consultas particulares, convênios, cirurgias...</p>" + "<p>Nós da Agraus sentimos essa necessidade e desenvolvemos esse produto.</p>"+"<p>Adicione sua secretária com nível de acesso para somente inserir dados e veja relatórios, gráficos em tempo real. </p>" + "<p>Um abraço,</br>Equipe Agraus.</p>";
+                  Meteor.apply('sendEmail', [userEmailUp, subject, html]);
+                  Router.go('/inserir');
+                  document.body.scrollTop = 0;
+                  mixpanel.identify(Random.id());
+                  mixpanel.people.set({
+                      "Signup date": moment().format("MMM Do YY - h:mm a"),
+                      "$email": userEmailUp,
+                      "Nome": userNameUp,
+                  });
+                  mixpanel.track("Clicou em cadastrar", {
+                    "user": userEmailUp,
+                  });
+
+                  }
+              });
+            NProgress.done();
+          }
+        },
+
 
 });
 
 Template.index.helpers({
   forgotIt: function () {
     return Session.get('forgotIt');
+  },
+  signUp: function () {
+    return Session.get('signUp');
   },
   resetPassword: function() {
     return Session.get('resetPassword');
