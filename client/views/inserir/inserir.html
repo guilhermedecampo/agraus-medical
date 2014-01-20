@@ -13,11 +13,11 @@
 
 	<div class="row">
 		<form id="formInserir">
-		<div class="col-xs-8 col-sm-4 col-sm-offset-4 col-xs-offset-2">
+		<div class="col-xs-10 col-sm-6 col-sm-offset-3 col-xs-offset-1">
 				<div class="row">
           <div class="col-xs-12 formContainer text-left">
             <h3>Tipo de renda</h3>
-            <select id="tipoRenda"  class="col-xs-12 formContainer">
+            <select id="nomeRenda"  class="col-xs-12 formContainer">
               <option value="">Escolher</option>
               {{#each listTipoRendas}}
                 <option value="{{nomeRenda}}">{{nomeRenda}}</option>
@@ -32,10 +32,10 @@
 
           <div class="col-xs-12 formContainer text-left">
             <h3>Nome Paciente</h3>
-            <select id="nomePaciente" class="col-xs-10 formContainer">
+            <select id="paciente" class="col-xs-10 formContainer">
             <option value="">Escolher paciente</option>
             {{#each listPacientes}}
-              <option value="{{nomePaciente}}">{{paciente}}</option>
+              <option value="{{paciente}}">{{paciente}}</option>
             {{/each}}
             </select>
             <i data-toggle="modal" data-target="#myModal" class="fa fa-plus-circle fa-2x col-xs-2 formContainer topAlign" title ="Adicionar paciente"></i>

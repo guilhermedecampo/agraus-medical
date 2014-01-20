@@ -1,12 +1,13 @@
-<template name="laudos">
+<template name="rendas">
   <section id="contacts">
-    <div class="row">
       <div class="col-xs-12 col-sm-6 col-sm-offset-3 intro">
         <h1>Rendas</h1>
           </br>
           <p>Olá {{displayName}}, abaixo estão as rendas adicionadas.</br>Filtre por período e tipo de renda.</p>
       </br>
       </br>
+    </div>
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2 intro">
         {{#if ifIntermediario}}
         <div class="row">
               <div class='col-xs-6 formContainer'>
@@ -20,53 +21,49 @@
                   {{/each}}
                </select>
             </div>
-            <div class="row">
-                <button class="btn">BUSCAR</button>
+            <div class="center">
+                <button class="btn">Buscar</button>
             </div>
 
         {{/if}}
       </div>
-    </div>
-    {{#ifAny orderList}}
-    <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+    {{#ifAny rendaList}}
       <div class="table-responsive">
         <table class="table table-hover">
           <thead>
             <tr>
-              <th>Filial</th>
-              <th>Data laudo</th>
-              <th>Empresa</th>
-              <th>Nome do funcionário</th>
-              <th>Função</th>
-              <th>Tipo de Exame</th>
-              <th>Exame realizado</th>
-              <th>Prestador</th>
+              <th>Data</th>
+              <th>Adicionado por</th>
+              <th>Paciente</th>
+              <th>Tipo de renda</th>
+              <th>Valor</th>
+              <th>Comentários</th>
               <th>Modificar</th>
               <th>Deletar</th>
             </tr>
           </thead>
           <tbody>
-            {{#each orderList}}
+            {{#each rendaList}}
             <tr>
-              <td>{{pertenceFilial}}</td>
-              <td>{{criadoEmMoment}}</td>
-              <td>{{nomeEmpresa}}</td>
-              <td>{{nomeFuncionario}}</td>
-              <td>{{funcaoFuncionario}}</td>
-              <td>{{tipoExame}}</td>
-              <td>{{exame}}</td>
-              <td>{{nomePrestador}}</td>
+              <td>{{data}}</td>
+              <td>{{criador}}</td>
+              <td>{{paciente}}</td>
+              <td>{{nomeRenda}}</td>
+              <td>{{valorRenda}}</td>
+              <td href="#" class="articlePop" data-toggle="popover" title="" data-container="body" data-html="true" data-trigger="hover" data-content="{{comentarios}}" role="button" data-original-title="<b>Data:</b> {{data}}">{{dot comentarios}}</td>
               <td><button id="modify" class="btn" data-toggle="modal" data-target="#myModal">Modificar</button></td>
-              <td><button id="modify" class='btn modify deletarLaudo'>Deletar</button></td>
+              <td><button id="modify" class='btn modify deletarRenda'>Deletar</button></td>
               {{/each}}
             </tr>
           </tbody>
         </table>
       </div>
+      {{#if allOrders}}
+      <div class="center">
+        <button id="more" class="btn">Mais</button>
+      </div>
+      {{/if}}
     </div>
-    {{#if allOrders}}
-    <input type="submit" id="more" class="button" value="More!">
-    {{/if}}
       {{else}}
       <div class="row intro">
         <h1 class="notfound">Você não tem laudos adicionados</h1>

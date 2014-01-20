@@ -1,6 +1,7 @@
-Template.laudos.rendered = function () {
+Template.rendas.rendered = function () {
   $('td').popover('hide');
 };
+
 
 Handlebars.registerHelper('ifAny', function(data, options) {
   if (!data || (_.isArray(data) && !data.length) || (_.isFunction(data.fetch) && !data.count()))
@@ -11,20 +12,20 @@ Handlebars.registerHelper('ifAny', function(data, options) {
 
 Handlebars.registerHelper('dot', function(str) {
   if (str) {
-  if (str.length > 30)
-    return str.substring(0,30) + '...';
+  if (str.length > 20)
+    return str.substring(0,20) + '...';
   return str;
 }
 });
 
 
 
-Session.set('slice', 3);
+Session.set('slice', 10);
 
-Template.laudos.helpers({
-  orderList: function () {
-    rendas = Rendas.find().fetch();
-    return rendas;
+Template.rendas.helpers({
+  rendaList: function () {
+    rendasLimit = Rendas.find({},{limit:Session.get('slice')}).fetch();
+    return rendasLimit;
   },
   displayName: function () {
       var user = Meteor.user();
@@ -42,11 +43,24 @@ Template.laudos.helpers({
     listTipoRendas = TipoRenda.find().fetch();
     return listTipoRendas;
   },
+  allOrders: function() {
+    rendasTotal = Rendas.find({}).fetch();
+    if (rendasTotal.length > 0) {
+      if (rendasTotal.length == rendasLimit.length){
+        return false;
+      } else {
+        return true;
+      }
+    } else {
+      this.stop();
+    }
+  },
 
 });
 
+x = 10;
 
-Template.laudos.events({
+Template.rendas.events({
   'click .goOrder': function (event, template) {
     Router.go('/inserir');
   },
@@ -65,11 +79,14 @@ Template.laudos.events({
 
             });
   },
-  'click .deletarLaudo': function (event, template) {
+  'click .deletarRenda': function (event, template) {
     var id = this._id;
     NProgress.start();
     Rendas.remove({_id:id});
     NProgress.done();
-  }
-
+  },
+    'click #more': function () {
+      x = x + 5;
+      Session.set('slice', x);
+    },
 });

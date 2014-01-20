@@ -20,8 +20,9 @@ Template.inserir.events({
     var nomeRenda         = template.find('#nomeRenda').value;
     var valorRenda        = TipoRenda.findOne({nomeRenda: nomeRenda}).valorRenda,
         data              = template.find('#data').value,
-        nomePaciente      = template.find('#nomePaciente').value,
+        paciente          = template.find('#paciente').value,
         comentarios       = template.find('#comentarios').value,
+        criador           = Meteor.user().profile.nome,
         criadoEmPuro      = new Date(),
         idCommon          = Meteor.user().profile.idCommon;
 
@@ -30,8 +31,9 @@ Template.inserir.events({
         nomeRenda: nomeRenda,
         valorRenda: valorRenda,
         data: data,
-        nomePaciente: nomePaciente,
+        paciente: paciente,
         comentarios: comentarios,
+        criador: criador,
         criadoEmPuro: criadoEmPuro,
         idCommon: idCommon,
       });

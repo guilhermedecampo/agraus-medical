@@ -28,7 +28,7 @@ Router.map(function() {
         },
 });
 
-  this.route('laudos', {path: '/laudos',
+  this.route('rendas', {path: '/rendas',
       after: function () {
         document.body.scrollTop = 0;
 

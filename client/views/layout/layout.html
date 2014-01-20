@@ -32,7 +32,7 @@
         <nav id="top-navigation">
           <ul class="list-inline">
             <li><a href="/inserir" >Adicionar Renda</a></li>
-            <li><a href="/laudos">Rendas Adicionadas</a></li>
+            <li><a href="/rendas">Rendas Adicionadas</a></li>
             {{#if adminNivel}}
             <li><a href="/relatorios" >Relatórios</a></li>
             <li><a href="/configuracoes" >Configurações</a></li>
@@ -50,7 +50,9 @@
 
   <!-- END TOP-BAR -->
   {{/if}}
+  <div class="container">
   {{yield}}
+</div>
         <!-- START CONTACTS SECTION
             <section id="contacts">
               <div class="row">
@@ -85,7 +87,7 @@
       <!-- START FOOTER -->
       <!-- START FOOTER -->
       {{#if currentUser}}
-      <footer>
+      <footer class="container">
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-sm-offset-3">
             <hr/>
