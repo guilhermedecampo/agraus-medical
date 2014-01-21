@@ -23,12 +23,16 @@
 				<div class="row">
           <div class="col-xs-12 formContainer text-left">
             <h3>Tipo de renda</h3>
-            <select id="nomeRenda"  class="col-xs-12 formContainer">
+            <select id="nomeRenda"  class="col-xs-10 formContainer">
               <option value="">Escolher</option>
               {{#each listTipoRendas}}
                 <option value="{{nomeRenda}}">{{nomeRenda}}</option>
               {{/each}}
             </select>
+              <div class="col-xs-1"></div>
+              <div class="col-xs-2">
+              <button  data-toggle="modal" data-target="#myModal" class="btnMore formContainer">Criar</button>
+            </div>
           </div>
 
 					<div class="col-xs-12 formContainer text-left">
@@ -44,8 +48,11 @@
               <option value="{{paciente}}">{{paciente}}</option>
             {{/each}}
             </select>
-            <i data-toggle="modal" data-target="#myModal" class="fa fa-plus-circle fa-2x col-xs-2 formContainer topAlign" title ="Adicionar paciente"></i>
+            <div class="col-xs-1"></div>
+            <div class="col-xs-2">
+            <button data-toggle="modal" data-target="#myModal" class="btnMore formContainer">Criar</button>
           </div>
+        </div>
 					<div class="col-xs-12 formContainer text-left">
 						<h3>Comentários</h3>
 					   <textarea id="comentarios" placeholder="Comentários"></textarea>
