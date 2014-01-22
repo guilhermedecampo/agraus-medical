@@ -4,57 +4,9 @@
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 intro">
       <h1>Configurações do aplicativo</h1>
     </br>
-      <p>Controle de usuários, renda e alteração de senha</p>
+      <p>Controle de usuários e alteração de senha</p>
     </div>
-    <div class="col-xs-12 col-sm-8 col-sm-offset-2 intro">
-      <div class="col-xs-5 formContainer">
-      <div class="row">
-        <h2>Rendas</h2>
-      </div>
-      <div class="row">
-        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-              <div class="table-responsive">
-                <table class="table table-hover">
-                  <thead>
-                    <tr>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {{#each listTipoRendas}}
-                    <tr>
-                      <td>{{nomeRenda}}<span class="deleteFilial">&nbsp;&nbsp;X</span></td>
-                    </tr>
-                    {{/each}}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-          </br>
-          </br>
-          <div class="row">
-            <h3>Adicionar Renda</h3>
-            </br>
-            <small class="explain">Exemplo: Consulta unimed, particular, cirurgia...</small>
-          </div>
-
-          <div class="row">
-            <input type="text" id="nomeRenda" class="requiredField email" placeholder="Nome renda">
-          </div>
-
-          <div class="row">
-            <input type="text" id="valorRenda" class="requiredField email" placeholder="Valor renda">
-          </div>
-
-          <div class="row">
-            <button id="submitRenda" class="btn" type="submit">ADICIONAR</button>
-          </div>
-
-      </div>
-      <div class="col-xs-1 formContainer">
-      </div>
-      <div class="col-xs-5 formContainer">
+      <div class="col-xs-10 col-sm-6 col-sm-offset-3 col-xs-offset-1">
         <div class="row">
           <h2>Usuários</h2>
         </div>
@@ -99,7 +51,6 @@
         <button id="submitUsuario" class="btn" type="submit">CRIAR</button>
       </div>
       </div>
-</div>
 
         </br>
         </br>

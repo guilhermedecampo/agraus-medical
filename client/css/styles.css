@@ -13,18 +13,18 @@ html, body {
 
 .explain {font-size: 15px; margin-bottom: 10px}
 
-#calendar::-webkit-input-placeholder {
+.calendar::-webkit-input-placeholder {
     color: white;
 }
-#calendar:-moz-placeholder {
+.calendar:-moz-placeholder {
     /* FF 4-18 */
     color: white;
 }
-#calendar::-moz-placeholder {
+.calendar::-moz-placeholder {
     /* FF 19+ */
     color: white;
 }
-#calendar:-ms-input-placeholder {
+.calendar:-ms-input-placeholder {
     /* IE 10+ */
     color: white;
 }
@@ -32,10 +32,9 @@ html, body {
 .topAlign {vertical-align: top;}
 .inline{display: inline-block;}
 .deleteRowForm {cursor:pointer;}
-th {text-align: center;}
 .center {text-align: center}
 .danger {background-color: red;}
-.deleteItem,  .deleteFilial, .deleteUsuario {cursor:pointer;}
+.deleteItem,  .deleteFilial, .deleteUsuario, .close {cursor:pointer;}
 .topIntro {padding-top: 3.125em;}
 .headline {color:#fff; text-decoration: none;}
 .headline:hover {text-decoration: none;}
@@ -73,10 +72,15 @@ a{color: #25AAE1; cursor:pointer;}
 p{color: #4a4a4a;font-size: 1.125em;line-height: 1.5625em;}
 select{color: white;padding: 0 1em; height: 2.4em;width: 4.5em;outline: none;border: 0;border-radius: 8px !important;background: url('/images/arrow-down.png') no-repeat right 0.8em #1B3D66;-webkit-appearance: none;}
 time{color:#25AAE1;}
-#calendar{color: white;padding: 0 1em; height: 2.4em;width: 20.5em;outline: none;border: 0;border-radius: 8px !important;background: url('/images/calendar.png') no-repeat right 0.6em #1B3D66;-webkit-appearance: none;}
+.calendar{color: white;padding: 0 1em; height: 2.4em;width: 7.5em;outline: none;border: 0;border-radius: 8px !important;background: url('/images/calendar.png') no-repeat right 0.6em #1B3D66;-webkit-appearance: none;}
 .btnNew{color: white;padding: 0 1em;height: 2.4em;outline: none;border: 0;border-radius: 8px !important;background: url('/images/calendar.png') no-repeat right 0.3em #25AAE1;-webkit-appearance: none;}
 .select2{color: white;padding: 0 1em; height: 2.4em;width: 20.5em;outline: none;border: 0;border-radius: 0 !important;background: url('/images/arrow-down.png') no-repeat right 0.8em #25AAE1;-webkit-appearance: none;}
 #modify {margin-top: 0px;}
+
+.marginModal {
+  margin-right: auto;
+  margin-left: auto;
+}
 
 /* ==========================================================================
    helpers
@@ -329,6 +333,7 @@ input[type="text"],input[type="email"],input[type="password"],input[type="tel"],
 input[type="text"]:focus,input[type="email"]:focus,input[type="password"]:focus,input[type="tel"]:focus, textarea:focus{background: #cadeec; -webkit-transition: all 0.15s linear; -moz-transition: all 0.15s linear; transition: all 0.15s linear;}
 
 .btnMore{ border-radius: 8px; height: 2.4em;border:none; background-color: #1B3D66; color: white;font-weight:normal;-webkit-transition: all 0.4s ease-in-out;-moz-transition: all 0.4s ease-in-out;-o-transition: all 0.4s ease-in-out;transition: all 0.4s ease-in-out;}
+.btnMoreCancel{margin-right: 5px; border-radius: 8px; height: 2.4em;border:none; background-color: #818181; color: white;font-weight:normal;-webkit-transition: all 0.4s ease-in-out;-moz-transition: all 0.4s ease-in-out;-o-transition: all 0.4s ease-in-out;transition: all 0.4s ease-in-out;}
  .btn{ border-radius: 8px; width:100%;margin-top:1em; border:none; background-color: #25AAE1; color: white;font-weight:normal;-webkit-transition: all 0.4s ease-in-out;-moz-transition: all 0.4s ease-in-out;-o-transition: all 0.4s ease-in-out;transition: all 0.4s ease-in-out;}
  .btn:hover{background-color: #2a2a2a; color: white;font-weight:normal;}
 .formContainer{position: relative;}

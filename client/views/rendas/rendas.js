@@ -1,5 +1,30 @@
 Template.rendas.rendered = function () {
   $('td').popover('hide');
+  xisto = new Date();
+  $('#periodo1').appendDtpicker({
+              "locale": "br",
+              "calendarMouseScroll": false,
+              "futureOnly": false,
+              "closeOnSelected": true,
+              "timelistScroll":false,
+              "firstDayOfWeek": 1,
+              "todayButton": false,
+              "dateFormat": "DD/MM/YYYY",
+
+
+          });
+  $('#periodo2').appendDtpicker({
+              "locale": "br",
+              "calendarMouseScroll": false,
+              "futureOnly": false,
+              "closeOnSelected": true,
+              "timelistScroll":false,
+              "firstDayOfWeek": 1,
+              "todayButton": false,
+              "dateFormat": "DD/MM/YYYY",
+
+
+          });
 };
 
 
@@ -64,20 +89,8 @@ Template.rendas.events({
   'click .goOrder': function (event, template) {
     Router.go('/inserir');
   },
-  'click #calendar': function (event, template) {
-    xisto = new Date();
-    $('#calendar').appendDtpicker({
-                "locale": "br",
-                "calendarMouseScroll": false,
-                "futureOnly": false,
-                "closeOnSelected": true,
-                "timelistScroll":false,
-                "firstDayOfWeek": 1,
-                "todayButton": false,
-                "dateFormat": "DD/MM/YYYY",
+  'click .calendar': function (event, template) {
 
-
-            });
   },
   'click .deletarRenda': function (event, template) {
     var id = this._id;

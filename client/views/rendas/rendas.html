@@ -5,28 +5,29 @@
           </br>
           <p>Olá {{displayName}}, abaixo estão as rendas adicionadas.</br>Filtre por período e tipo de renda.</p>
       </br>
-      </br>
     </div>
       <div class="col-xs-12 col-sm-8 col-sm-offset-2 intro">
         {{#if ifIntermediario}}
         <div class="row">
-              <div class='col-xs-6 formContainer'>
-                <input id="calendar" readonly='readonly' class="col-xs-12 formContainer" placeholder="Calendário"/>
+              <div class='col-xs-2'>
+                <input class="calendar" id="periodo1" readonly='readonly' class="col-xs-6" placeholder="Período 1"/>
               </div>
-              <div class='col-xs-6 formContainer'>
-                <select id="filial"  class="col-xs-12 formContainer" alt="Nome filial">
-                  <option value="">Escolher filial</option>
+              <div class='col-xs-1'>
+              </div>
+              <div class='col-xs-2'>
+                <input class="calendar" id="periodo2" readonly='readonly' class="col-xs-6" placeholder="Período 2"/>
+              </div>
+              <div class='col-xs-5 pull-right'>
+                <select id="filial"  class="col-xs-12">
+                  <option value="">Escolher renda</option>
                   {{#each listTipoRendas}}
                     <option value="{{nomeRenda}}">{{nomeRenda}}</option>
                   {{/each}}
                </select>
             </div>
-            <div class="center">
-                <button class="btn">Buscar</button>
-            </div>
-
         {{/if}}
       </div>
+    </br>
     {{#ifAny rendaList}}
       <div class="table-responsive">
         <table class="table table-hover">
@@ -38,7 +39,6 @@
               <th>Tipo de renda</th>
               <th>Valor</th>
               <th>Comentários</th>
-              <th>Modificar</th>
               <th>Deletar</th>
             </tr>
           </thead>
@@ -51,7 +51,6 @@
               <td>{{nomeRenda}}</td>
               <td>{{valorRenda}}</td>
               <td href="#" class="articlePop" data-toggle="popover" title="" data-container="body" data-html="true" data-trigger="hover" data-content="{{comentarios}}" role="button" data-original-title="<b>Data:</b> {{data}}">{{dot comentarios}}</td>
-              <td><button id="modify" class="btn" data-toggle="modal" data-target="#myModal">Modificar</button></td>
               <td><button id="modify" class='btn modify deletarRenda'>Deletar</button></td>
               {{/each}}
             </tr>

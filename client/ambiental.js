@@ -141,3 +141,12 @@ emailSendTo = (user.emails && user.emails[0] && user.emails[0].address);
 //
 }
 });
+
+$(window).resize(function() {
+  // This will execute whenever the window is resized
+  windowSize = $(window).width(); // New height
+  $(window).width(); // New width
+  if (windowSize > 922) {
+    $('li').removeAttr('style');
+  }
+});

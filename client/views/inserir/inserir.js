@@ -42,16 +42,50 @@ Template.inserir.events({
       $('#formInserir')[0].reset();
       document.body.scrollTop = 0;
   },
+  'click #submitTipoRenda': function (event, template) {
+    var nomeTipoRenda = template.find('#nomeTipoRenda').value;
+    var valorRenda = template.find('#valorTipoRenda').value;
+    if (isNotEmpty(nomeRenda)&&isNotEmpty(valorRenda)) {
+      NProgress.start();
+      TipoRenda.insert({
+        nomeRenda:nomeTipoRenda,
+        valorRenda:valorRenda,
+        idCommon: Meteor.user().profile.idCommon,
+      });
+      NProgress.done();
+      template.find('#nomeTipoRenda').value = '';
+      template.find('#valorTipoRenda').value = '';
+      humane.log('Tipo de renda adicionada com sucesso.');
+    }
+  },
+  'click .deleteTipoRenda': function(event, template) {
+        var id  = this._id;
+        NProgress.start();
+    TipoRenda.remove({_id:id});
+        NProgress.done();
+        humane.log('Tipo de renda removida com sucesso.');
+  },
 
-  'click #submitNewPaciente': function (event, template) {
-    var newPaciente = template.find('#newPaciente').value;
+  'click #submitPaciente': function (event, template) {
+    event.preventDefault();
+    var newPaciente = template.find('#nomePaciente').value;
     NProgress.start();
       Pacientes.insert({
         paciente: newPaciente,
         idCommon: Meteor.user().profile.idCommon,
       });
       NProgress.done();
+      template.find('#valorTipoRenda').value = '';
       humane.log('Paciente adicionado com sucesso.');
+
+    },
+    'click .deletePaciente': function(event, template) {
+      event.preventDefault();
+        var id  = this._id;
+          NProgress.start();
+            Pacientes.remove({_id:id});
+          NProgress.done();
+          humane.log('Paciente removido com sucesso.');
     },
 
 });

@@ -11,25 +11,37 @@ Template.relatorios.helpers({
 });
 
 Template.relatorios.events({
-  'click #calendar': function (event, template) {
-      xisto = new Date();
-      $('#calendar').appendDtpicker({
-                  "locale": "br",
-                  "calendarMouseScroll": false,
-                  "futureOnly": false,
-                  "closeOnSelected": true,
-                  "timelistScroll":false,
-                  "firstDayOfWeek": 1,
-                  "todayButton": false,
-                  "dateFormat": "DD/MM/YYYY",
-
-
-              });
+  'click .calendar': function (event, template) {
     },
 });
 
 
 Template.relatorios.rendered = function () {
+  xisto = new Date();
+  $('#relatorioPeriodo1').appendDtpicker({
+                "locale": "br",
+                "calendarMouseScroll": false,
+                "futureOnly": false,
+                "closeOnSelected": true,
+                "timelistScroll":false,
+                "firstDayOfWeek": 1,
+                "todayButton": false,
+                "dateFormat": "DD/MM/YYYY",
+
+
+          });
+  $('#relatorioPeriodo2').appendDtpicker({
+              "locale": "br",
+              "calendarMouseScroll": false,
+              "futureOnly": false,
+              "closeOnSelected": true,
+              "timelistScroll":false,
+              "firstDayOfWeek": 1,
+              "todayButton": false,
+              "dateFormat": "DD/MM/YYYY",
+
+
+          });
   // ...
   //Get the context of the canvas element we want to select
   var ctx = document.getElementById("myChart").getContext("2d");

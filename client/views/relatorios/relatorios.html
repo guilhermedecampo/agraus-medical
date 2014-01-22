@@ -8,14 +8,19 @@
     </div>
       <div class="col-xs-12 col-sm-8 col-sm-offset-2 intro">
         <div class="row">
-          <div class='col-xs-6 formContainer'>
-            <input id="calendar" readonly='readonly' class="col-xs-12 formContainer" placeholder="Calendário"/>
+          <div class='col-xs-2'>
+            <input class="calendar" id="relatorioPeriodo1" readonly='readonly' class="col-xs-6" placeholder="Período 1"/>
           </div>
-          <div class='col-xs-6 formContainer'>
+          <div class='col-xs-1'>
+          </div>
+          <div class='col-xs-2'>
+            <input class="calendar" id="relatorioPeriodo2" readonly='readonly' class="col-xs-6" placeholder="Período 2"/>
+          </div>
+          <div class='col-xs-6 pull-right'>
             <select id="filial"  class="col-xs-12 formContainer" alt="Nome filial">
               <option value="">Escolher filial</option>
               {{#each listTipoRendas}}
-                <option value="{{tipoRenda}}">{{tipoRenda}}</option>
+                <option value="{{nomeRenda}}">{{nomeRenda}}</option>
               {{/each}}
            </select>
           </div>

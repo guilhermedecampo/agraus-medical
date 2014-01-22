@@ -31,7 +31,7 @@
             </select>
               <div class="col-xs-1"></div>
               <div class="col-xs-2">
-              <button  data-toggle="modal" data-target="#myModal" class="btnMore formContainer">Criar</button>
+              <button  data-toggle="modal" data-target="#rendaModal" class="btnMore formContainer">Alterar</button>
             </div>
           </div>
 
@@ -50,7 +50,7 @@
             </select>
             <div class="col-xs-1"></div>
             <div class="col-xs-2">
-            <button data-toggle="modal" data-target="#myModal" class="btnMore formContainer">Criar</button>
+            <button data-toggle="modal" data-target="#pacienteModal" class="btnMore formContainer">Alterar</button>
           </div>
         </div>
 					<div class="col-xs-12 formContainer text-left">
@@ -80,7 +80,64 @@
 </section>
 <!-- END SERVICES SECTION -->
 <!-- START MODAL  SECTION -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="rendaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3 class="modal-title" id="myModalLabel">Adicionar renda</h3>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+          <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>Nome</th>
+                        <th>Valor</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {{#each listTipoRendas}}
+                      <tr>
+                        <td>{{nomeRenda}}</td>
+                        <td>{{valorRenda}}<span class="close deleteTipoRenda pull-right"  aria-hidden="true">&times;</span></td>
+                      </tr>
+                      {{/each}}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            </br>
+            </br>
+            <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+            <div class="row">
+              <small class="explain">Exemplo: Consulta unimed, particular, cirurgia...</small>
+            </div>
+
+            <div class="row">
+              <input type="text" id="nomeTipoRenda" class="requiredField email" placeholder="Nome renda">
+            </div>
+
+            <div class="row">
+              <input type="text" id="valorTipoRenda" class="requiredField email" placeholder="Valor renda">
+            </div>
+            </div>
+            </div>
+            <div class="row">
+              <button data-dismiss="modal" id="submitTipoRenda" class="btnMore pull-right" type="submit">Adicionar</button>
+              <button data-dismiss="modal" class="btnMoreCancel pull-right cancel" type="submit">Cancelar</button>
+            </div>
+            </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+      <!-- END MODAL SECTION -->
+<!-- START MODAL  SECTION -->
+    <div class="modal fade" id="pacienteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -89,18 +146,38 @@
           </div>
           <div class="modal-body">
             <div class="row">
-              <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-                  <div class="row">
-                    <div class="col-xs-12 formContainer">
-                      <input type="text" id="newPaciente" value="" class="requiredField" placeholder="Paciente">
-                    </div>
-                  </div>
+          <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>Nome</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {{#each listPacientes}}
+                      <tr>
+                        <td>{{paciente}}<span class="close deletePaciente pull-right" data-dismiss="modal"  aria-hidden="true">&times;</span></td>
+                      </tr>
+                      {{/each}}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" id="submitNewPaciente" class="btn btn-primary">Adicionar</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            </br>
+            </br>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                <div class="row">
+                  <input type="text" id="nomePaciente" class="requiredField email" placeholder="Nome paciente">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <button data-dismiss="modal" id="submitPaciente" class="btnMore pull-right" type="submit">Adicionar</button>
+              <button data-dismiss="modal" class="btnMoreCancel pull-right cancel" type="submit">Cancelar</button>
+            </div>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
