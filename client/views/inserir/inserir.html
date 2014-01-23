@@ -31,7 +31,7 @@
             </select>
               <div class="col-xs-1"></div>
               <div class="col-xs-2">
-              <button  data-toggle="modal" data-target="#rendaModal" class="btnMore formContainer">Alterar</button>
+              <button  data-toggle="modal" data-target="#rendaModal" class="btnMore formContainer">Criar/Alterar</button>
             </div>
           </div>
 
@@ -50,7 +50,7 @@
             </select>
             <div class="col-xs-1"></div>
             <div class="col-xs-2">
-            <button data-toggle="modal" data-target="#pacienteModal" class="btnMore formContainer">Alterar</button>
+            <button data-toggle="modal" data-target="#pacienteModal" class="btnMore formContainer">Criar/Alterar</button>
           </div>
         </div>
 					<div class="col-xs-12 formContainer text-left">
@@ -74,7 +74,7 @@
 	</br>
 	<div id= "contacts" class="row">
 		<div class="col-xs-12 col-sm-6 col-sm-offset-3 intro">
-			<button id="submitRenda" class="btn">SALVAR</button>
+			<button id="submitRenda" class="btn">Salvar</button>
 		</div>
 	</div>
 </section>
@@ -102,7 +102,7 @@
                       {{#each listTipoRendas}}
                       <tr>
                         <td>{{nomeRenda}}</td>
-                        <td>{{valorRenda}}<span class="close deleteTipoRenda pull-right"  aria-hidden="true">&times;</span></td>
+                        <td>{{valorRenda}}<span class="close deleteTipoRenda pull-right"  aria-hidden="true" alt="deletar">&times;</span></td>
                       </tr>
                       {{/each}}
                     </tbody>
@@ -157,7 +157,7 @@
                     <tbody>
                       {{#each listPacientes}}
                       <tr>
-                        <td>{{paciente}}<span class="close deletePaciente pull-right" data-dismiss="modal"  aria-hidden="true">&times;</span></td>
+                        <td>{{paciente}}<span class="close deletePaciente pull-right" data-dismiss="modal"  aria-hidden="true" alt="deletar">&times;</span></td>
                       </tr>
                       {{/each}}
                     </tbody>

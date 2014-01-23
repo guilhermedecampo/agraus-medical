@@ -80,6 +80,9 @@ Template.rendas.helpers({
       this.stop();
     }
   },
+  listSelecteds: function () {
+    return Session.get('rendasSelect');
+  }
 
 });
 
@@ -103,3 +106,11 @@ Template.rendas.events({
       Session.set('slice', x);
     },
 });
+
+
+//Rendas selecionadas
+Session.set("rendasSelect", []);
+
+
+
+

@@ -20,7 +20,7 @@
          <tbody>
            {{#each listUsuarios}}
          <tr>
-           <td>{{email}}<span class="deleteUsuario">&nbsp;&nbsp;X</span></td>
+           <td>{{email}}<span class="deleteUsuario pull-right">&times;</span></td>
          </tr>
            {{/each}}
          </tbody>
@@ -43,7 +43,6 @@
         <small class="explain">Escolha que tipo de acesso esse usuário terá.</small>
         <select id="nivelEscolha"  class="col-xs-12 formContainer">
             <option value='basico'>Somente inserir rendas</option>
-            <option value='intermediario'>Inserir rendas e backup</option>
             <option value='administrador'>Acesso total</option>
          </select>
       </div>

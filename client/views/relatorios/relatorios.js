@@ -48,14 +48,14 @@ Template.relatorios.rendered = function () {
   console.log(ctx);
   var x = TipoRenda.find().fetch();
   var data = {
-    labels : _.map(x || [], function (nomeRenda) { return nomeRenda.nomeRenda;}),
+    labels : _.map(x || [], function (TipoRenda) { return TipoRenda.nomeRenda;}),
     datasets : [
       {
         fillColor : "rgba(220,220,220,0.5)",
         strokeColor : "rgba(220,220,220,1)",
         pointColor : "rgba(220,220,220,1)",
         pointStrokeColor : "#fff",
-        data : [65,59,90,81,56,55,40]
+        data : _.map(x || [], function (TipoRenda) { return TipoRenda.valorRenda;})
       },
       {
         fillColor : "rgba(151,187,205,0.5)",

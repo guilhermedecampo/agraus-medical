@@ -63,11 +63,11 @@ Template.inserir.events({
         NProgress.start();
     TipoRenda.remove({_id:id});
         NProgress.done();
+        $('#rendaModal').modal('hide');
         humane.log('Tipo de renda removida com sucesso.');
   },
 
   'click #submitPaciente': function (event, template) {
-    event.preventDefault();
     var newPaciente = template.find('#nomePaciente').value;
     NProgress.start();
       Pacientes.insert({
@@ -80,11 +80,11 @@ Template.inserir.events({
 
     },
     'click .deletePaciente': function(event, template) {
-      event.preventDefault();
         var id  = this._id;
           NProgress.start();
             Pacientes.remove({_id:id});
           NProgress.done();
+          $('#pacienteModal').modal('hide');
           humane.log('Paciente removido com sucesso.');
     },
 
