@@ -902,7 +902,7 @@
 			"futureOnly": false,
 			"minDate" : null,
 			"maxDate" : null,
-			"autodateOnStart": false
+			"autodateOnStart": true
 		};
 	};
 

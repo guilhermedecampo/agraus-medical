@@ -7,7 +7,6 @@
       </br>
     </div>
       <div class="col-xs-12 col-sm-8 col-sm-offset-2 intro">
-        {{#if ifIntermediario}}
         <div class="row">
           <div class='col-xs-2'>
             <input class="calendar" id="periodo1" readonly='readonly' class="col-xs-6" placeholder="Período 1"/>
@@ -18,18 +17,17 @@
             <input class="calendar" id="periodo2" readonly='readonly' class="col-xs-6" placeholder="Período 2"/>
           </div>
           <div class='col-xs-5 pull-right'>
-            <select id="filial"  class="col-xs-12">
+            <select id="rendaChoose"  class="col-xs-12">
               <option value="">Escolher renda</option>
               {{#each listTipoRendas}}
                 <option value="{{nomeRenda}}">{{nomeRenda}}</option>
               {{/each}}
            </select>
           </div>
-        {{/if}}
       </div>
     </br>
     <div class="row">
-      <p class=" text-left">Rendas Selecionadas:</p>
+      <p class=" text-left">Rendas Selecionadas:{{#each listSelecteds}} <button class="btnMore">{{renda}}<span class="deleteRenda">  &times;</span></button>{{/each}}</p>
     </div>
     </br>
     {{#ifAny rendaList}}
