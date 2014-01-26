@@ -1,25 +1,4 @@
 Template.configuracoes.events({
-  'click #submitRenda': function (event, template) {
-    var nomeRenda = template.find('#nomeRenda').value;
-    var valorRenda = template.find('#valorRenda').value;
-    if (isNotEmpty(nomeRenda)&&isNotEmpty(valorRenda)) {
-      NProgress.start();
-      TipoRenda.insert({
-        nomeRenda:nomeRenda,
-        valorRenda:valorRenda,
-        idCommon: Meteor.user().profile.idCommon,
-      });
-      NProgress.done();
-      template.find('#nomeRenda').value = '';
-      template.find('#valorRenda').value = '';
-    }
-  },
-  'click .deleteFilial': function(event, template) {
-        var id  = this._id;
-        NProgress.start();
-    TipoRenda.remove({_id:id});
-        NProgress.done();
-  },
   'click #submitUsuario': function (event, template) {
       var nome      = template.find('#nomeUsuario').value,
           nivel     = template.find('#nivelEscolha').value,
@@ -41,12 +20,10 @@ Template.configuracoes.events({
 });
 
 Template.configuracoes.helpers({
-  listTipoRendas: function () {
-    listTipoRendas = TipoRenda.find().fetch();
-    return listTipoRendas;
-  },
   listUsuarios: function () {
-    var listUsuarios = Meteor.users.find({});
+    var user = Meteor.user();
+    var email = (user.emails && user.emails[0] && user.emails[0].address);
+    var listUsuarios = Meteor.users.find({ "emails.address": { $nin: [ email ] } });
     return listUsuarios.map(function(user) { return {email: user.emails[0].address}; });
   },
 });
