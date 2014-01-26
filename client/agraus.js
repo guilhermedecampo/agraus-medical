@@ -150,3 +150,25 @@ $(window).resize(function() {
     $('li').removeAttr('style');
   }
 });
+
+
+Date.prototype.addDays = function(days) {
+    var dat = new Date(this.valueOf());
+    dat.setDate(dat.getDate() + days);
+    return dat;
+};
+
+
+
+getDates = function (startDate, stopDate) {
+      var dateArray = [];
+      while (startDate <= stopDate) {
+        var day = startDate.getDate();
+        var month = startDate.getMonth();
+        var year = startDate.getFullYear();
+        var total = day + '/' + month + '/' + year;
+        dateArray.push(total);
+        startDate = startDate.addDays(1);
+      }
+      return dateArray;
+    };
