@@ -16,6 +16,9 @@ Template.configuracoes.events({
     var email = this.email;
     var user = Meteor.users.findOne({"emails.address": email});
     Meteor.users.remove({_id: user._id});
+  },
+  'click .deletarConta': function (event, template) {
+    Meteor.call('removeEverything');
   }
 });
 

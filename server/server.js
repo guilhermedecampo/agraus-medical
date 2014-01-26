@@ -179,6 +179,17 @@ Meteor.startup(function () {
         Accounts.sendEnrollmentEmail(UserId);
       }
       },
+      removeEverything: function() {
+        if (this.userId) {
+        var user = Meteor.users.findOne(this.userId);
+        var Id = user._id;
+        var Common = user.profile.idCommon;
+        Rendas.remove({idCommon:Common});
+        TipoRenda.remove({idCommon:Common});
+        Pacientes.remove({idCommon:Common});
+        Meteor.users.remove({"profile.idCommon":Common});
+      }
+      }
 
 
     });
