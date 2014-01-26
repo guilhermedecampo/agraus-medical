@@ -69,21 +69,23 @@ Template.rendas.helpers({
     rendasTotal = Rendas.find({}).fetch();
     if (rendasTotal) {
     if (rendasTotal.length > 0) {
-        return false;
-      } else {
         return true;
+      } else {
+        return false;
       }
     }
   },
   list: function() {
-    if (Session.get("search_keywords") !== undefined) {
-      keywords = Session.get("search_keywords");
-      rendas = Rendas.find().fetch().filter(function (doc) {
-        var stringified = JSON.stringify(doc);
-        return _.all(keywords, function (keyword) {
-          return stringified.match(new RegExp(keyword, 'i'));
-        });
-      });
+    if (Session.get("search_keywords") === undefined) {
+      return Rendas.find();
+    }else {
+      var datas = Session.get("search_keywords");
+      var rendas = Session.get('rendasSelect').rendas;
+      rendas = Rendas.find({ $and: [
+        { data: {$in: datas} },
+        { nomeRenda: {$in: rendas} },
+
+      ]});
       return rendas;
     }
   },
@@ -101,20 +103,17 @@ Template.rendas.events({
   'click .search': function (event, template) {
     var $periodo1    = $('#periodo1').val();
     var arrayP1      = $periodo1.split('/');
-    console.log(arrayP1);
     var dateP1       = new Date(arrayP1[2],arrayP1[1]-1,arrayP1[0]);
-    console.log(dateP1);
     var $periodo2    = $('#periodo2').val();
     var arrayP2      = $periodo2.split('/');
     var dateP2       = new Date(arrayP2[2],arrayP2[1]-1,arrayP2[0]);
     var rangeDates   = getDates(dateP1,dateP2);
-    console.log(rangeDates);
+    var rendaChoosed = template.find('#rendaChoose').value;
 
-    Session.set("search_keywords", rangeDates);
-  },
-  'click #more': function () {
-    x = x + 5;
-    Session.set('slice', x);
+    if (threeIsNotEmpty($periodo1,$periodo2,rendaChoosed)) {
+      Session.set("search_keywords", rangeDates);
+    }
+
   },
   'change #rendaChoose': function (event, template) {
     var rendaChoosed = template.find('#rendaChoose').value;
@@ -133,6 +132,10 @@ Template.rendas.events({
     var id  = list._id;
     chooseRendas.update({_id: id }, {rendas: []});
     Session.set('rendasSelect', chooseRendas.findOne());
+    Session.set("search_keywords", undefined);
+  },
+  'click .goOrder': function (event, template) {
+    Router.go('/inserir');
   },
 
 });

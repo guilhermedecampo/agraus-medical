@@ -67,21 +67,24 @@
           </tbody>
         </table>
       </div>
-      {{#if allOrders}}
-      <div class="center">
-        <button id="more" class="btn">Mais</button>
-      </div>
-      {{/if}}
     </div>
       {{else}}
     </br>
     </br>
       <div class="row intro">
-        <h1 class="notfound">Você não tem laudos adicionados</h1>
+        {{#if allOrders}}
+        <div class="center">
+          </br>
+          </br>
+          <p>Nada encontrado!</p>
+        </div>
+        {{else}}
+        <h1 class="notfound">Você não tem rendas adicionadas</h1>
       </div>
       <div id= "intro" class="col-xs-12 formContainer">
         <button class="btn goOrder">Adicionar</button>
       </div>
+      {{/if}}
       {{/ifAny}}
   </section>
   <!-- START MODAL  SECTION -->

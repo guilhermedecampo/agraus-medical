@@ -65,6 +65,15 @@ isNotEmpty = function (val) {
   return true;
 };
 
+threeIsNotEmpty = function (val1, val2, val3) {
+  // if null or empty, return false
+  if ((!val1 || val1 === '')||(!val2 || val2 === '')||(!val3 || val3 === '')){
+    humane.log('Por favor, selecione os períodos e pelo menos uma renda.');
+    return false;
+  }
+  return true;
+};
+
 trimInput = function (val) {
   return val.replace(/^\s*|\s*$/g, "");
 };
@@ -163,8 +172,8 @@ Date.prototype.addDays = function(days) {
 getDates = function (startDate, stopDate) {
       var dateArray = [];
       while (startDate <= stopDate) {
-        var day = startDate.getDate();
-        var month = startDate.getMonth();
+        var day = ("0" + startDate.getDate()).slice(-2);
+        var month = ("0" + (startDate.getMonth() + 1)).slice(-2);
         var year = startDate.getFullYear();
         var total = day + '/' + month + '/' + year;
         dateArray.push(total);
