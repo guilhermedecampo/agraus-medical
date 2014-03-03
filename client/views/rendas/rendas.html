@@ -81,11 +81,16 @@
         {{else}}
         <h1 class="notfound">Você não tem rendas adicionadas</h1>
       </div>
-      <div id= "intro" class="col-xs-12 formContainer">
+      <div id="intro" class="col-xs-12 formContainer">
         <button class="btn goOrder">Adicionar</button>
       </div>
       {{/if}}
       {{/ifAny}}
+      {{#if isMore}}
+      <div id="intro" class="col-xs-12 formContainer">
+        <button class="btn more">Mais</button>
+      </div>
+      {{/if}}
   </section>
   <!-- START MODAL  SECTION -->
       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

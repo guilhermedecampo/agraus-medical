@@ -53,8 +53,8 @@ Template.inserir.events({
         idCommon: Meteor.user().profile.idCommon,
       });
       NProgress.done();
-      template.find('#nomeTipoRenda').value = '';
-      template.find('#valorTipoRenda').value = '';
+      console.log(nomeTipoRenda);
+      console.log(valorRenda);
       humane.log('Tipo de renda adicionada com sucesso.');
     }
   },

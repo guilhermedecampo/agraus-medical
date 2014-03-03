@@ -31,7 +31,6 @@ get_gravatar = function(email, size) {
 
 isAdmin = function (email) {
   if (email === 'guilherme.decampo@gmail.com' ||
-      email === 'marcoshobby@hotmail.com' ||
       email === 'guilhermex2@gmail.com'
         ) {
       return true;

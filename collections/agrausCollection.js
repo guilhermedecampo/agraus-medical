@@ -1,4 +1,4 @@
-Rendas = new Meteor.SmartCollection('rendas');
-TipoRenda = new Meteor.SmartCollection('tipoRenda');
-Pacientes = new Meteor.SmartCollection('pacientes');
+Rendas = new Meteor.Collection('rendas');
+TipoRenda = new Meteor.Collection('tipoRenda');
+Pacientes = new Meteor.Collection('pacientes');
 

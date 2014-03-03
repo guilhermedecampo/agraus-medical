@@ -1,3 +1,7 @@
+Template.rendas.created = function () {
+Session.set("limit", 2);
+};
+
 Template.rendas.rendered = function () {
   $('td').popover('hide');
   xisto = new Date();
@@ -25,6 +29,7 @@ Template.rendas.rendered = function () {
 
 
           });
+
 };
 
 //Choose renda collection
@@ -62,11 +67,12 @@ Template.rendas.helpers({
     },
 
   listTipoRendas: function () {
-    listTipoRendas = TipoRenda.find().fetch();
+    var listTipoRendas = TipoRenda.find().fetch();
     return listTipoRendas;
   },
+
   allOrders: function() {
-    rendasTotal = Rendas.find({}).fetch();
+    var rendasTotal = Rendas.find({}).fetch();
     if (rendasTotal) {
     if (rendasTotal.length > 0) {
         return true;
@@ -75,9 +81,11 @@ Template.rendas.helpers({
       }
     }
   },
+
   list: function() {
     if (Session.get("search_keywords") === undefined) {
-      return Rendas.find();
+      rendaInicial = Rendas.find({}, { limit : Session.get("limit") });
+      return rendaInicial;
     }else {
       var datas = Session.get("search_keywords");
       var rendas = Session.get('rendasSelect').rendas;
@@ -93,11 +101,17 @@ Template.rendas.helpers({
     if (Session.get('rendasSelect') !== undefined) {
        return Session.get('rendasSelect').rendas;
     }
+  },
+  isMore: function () {
+    var rendaTotal = Rendas.find({});
+    if (rendaInicial.count() == rendaTotal.count()) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
 });
-
-x = 10;
 
 Template.rendas.events({
   'click .search': function (event, template) {
@@ -137,6 +151,12 @@ Template.rendas.events({
   'click .goOrder': function (event, template) {
     Router.go('/inserir');
   },
+
+  'click .more': function (event, template) {
+    var now  = Session.get("limit");
+    now += 5;
+    Session.set("limit", now);
+  }
 
 });
 

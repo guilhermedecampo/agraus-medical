@@ -26,23 +26,25 @@ Meteor.publish('rendas', function () {
 });
 
 Meteor.publish('tipoRenda', function () {
-  if (this.userId) {
-  var user = Meteor.users.findOne(this.userId);
-  var email = (user.emails && user.emails[0] && user.emails[0].address);
-  if (isAdmin(email)) {
-    return TipoRenda.find({});
-  } else {
-    return TipoRenda.find({idCommon: idCommon});
-  }
-  } else {
-    this.ready();
-  }
+ if (this.userId) {
+   var user = Meteor.users.findOne(this.userId);
+   var email = (user.emails && user.emails[0] && user.emails[0].address);
+   var idCommon = user.profile.idCommon;
+   if (isAdmin(email)) {
+     return TipoRenda.find({});
+   } else {
+     return TipoRenda.find({idCommon: idCommon});
+   }
+   } else {
+     this.ready();
+   }
 });
 
 Meteor.publish('pacientes', function () {
   if (this.userId) {
   var user = Meteor.users.findOne(this.userId);
   var email = (user.emails && user.emails[0] && user.emails[0].address);
+  var idCommon = user.profile.idCommon;
   if (isAdmin(email)) {
     return Pacientes.find({});
   } else {
@@ -77,10 +79,10 @@ Meteor.publish('admin', function () {
   if (isAdmin(email)) {
     return Meteor.users.find({});
   } else {
-    this.ready();
+    return [];
   }
   } else {
-    this.ready();
+    return [];
   }
 });
 
@@ -92,14 +94,14 @@ Meteor.publish('changeEmail', function () {
 
 Meteor.users.allow({
 
-  update: function (userId) {
+  update: function (userId, user) {
     // can only change your own info
-        return true;
+        return user._id === userId;
   },
 
   remove:function() {
     // can only delete your own info
-        return true;
+        return user._id === userId;
     },
 });
 
@@ -107,17 +109,21 @@ Meteor.users.allow({
 //Permissions//
 Rendas.allow({
   insert: function (userId, doc) {
-    // the user must be logged in, and the document must be owned by the user
-        return true;
+   var user = Meteor.users.findOne(userId);
+         // can only remove your own documents
+         return user.profile.idCommon === doc.idCommon;
   },
 
   update: function (userId, doc, fields, modifier) {
-      return true;
+    var user = Meteor.users.findOne(userId);
+          // can only remove your own documents
+          return user.profile.idCommon === doc.idCommon;
   },
 
   remove: function (userId, doc) {
-      // can only remove your own documents
-         return true;
+   var user = Meteor.users.findOne(userId);
+         // can only remove your own documents
+         return user.profile.idCommon === doc.idCommon;
   }
 
 
@@ -125,17 +131,23 @@ Rendas.allow({
 
 TipoRenda.allow({
   insert: function (userId, doc) {
-    // the user must be logged in, and the document must be owned by the user
-        return true;
+   var user = Meteor.users.findOne(userId);
+   console.log(user.profile.idCommon);
+   console.log(doc.idCommon);
+         // can only remove your own documents
+         return user.profile.idCommon === doc.idCommon;
   },
 
   update: function (userId, doc, fields, modifier) {
-      return true;
+      var user = Meteor.users.findOne(userId);
+            // can only remove your own documents
+            return user.profile.idCommon === doc.idCommon;
   },
 
   remove: function (userId, doc) {
-      // can only remove your own documents
-         return true;
+     var user = Meteor.users.findOne(userId);
+           // can only remove your own documents
+           return user.profile.idCommon === doc.idCommon;
   }
 
 
@@ -143,17 +155,21 @@ TipoRenda.allow({
 
 Pacientes.allow({
   insert: function (userId, doc) {
-    // the user must be logged in, and the document must be owned by the user
-        return true;
+   var user = Meteor.users.findOne(userId);
+         // can only remove your own documents
+         return user.profile.idCommon === doc.idCommon;
   },
 
   update: function (userId, doc, fields, modifier) {
-      return true;
+      var user = Meteor.users.findOne(userId);
+            // can only remove your own documents
+            return user.idCommon === doc.idCommon;
   },
 
   remove: function (userId, doc) {
+    var user = Meteor.users.findOne(userId);
       // can only remove your own documents
-         return true;
+      return user.profile.idCommon === doc.idCommon;
   }
 
 
@@ -168,7 +184,7 @@ Meteor.startup(function () {
       sendEmail: function(email, subject, html) {
         Email.send({
           to: email,
-          from: "Agraus Boas Vindas "+"hello@dsedimently.com",
+          from: "Agraus Boas Vindas "+"hello@agraus.com",
           subject: subject,
           html: html
         });
